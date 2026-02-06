@@ -1,5 +1,7 @@
 import * as THREE from 'https://unpkg.com/three@0.160.0/build/three.module.js';
 
+const canvas = document.querySelector('#webgl');
+
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x0b0b0f);
 
@@ -11,12 +13,14 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.z = 5;
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
+const renderer = new THREE.WebGLRenderer({
+  canvas,
+  antialias: true
+});
 renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(window.devicePixelRatio);
-document.body.appendChild(renderer.domElement);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-// Geometría central
+// Geometría
 const geometry = new THREE.IcosahedronGeometry(1.2, 1);
 const material = new THREE.MeshStandardMaterial({
   color: 0xffffff,
@@ -26,15 +30,11 @@ const material = new THREE.MeshStandardMaterial({
 const mesh = new THREE.Mesh(geometry, material);
 scene.add(mesh);
 
-// Luz
-const light = new THREE.PointLight(0xffffff, 1);
-light.position.set(3, 3, 3);
-scene.add(light);
+// Luces
+scene.add(new THREE.PointLight(0xffffff, 1, 10).position.set(3,3,3));
+scene.add(new THREE.AmbientLight(0xffffff, 0.4));
 
-const ambient = new THREE.AmbientLight(0xffffff, 0.4);
-scene.add(ambient);
-
-// Animación
+// Render loop
 function animate() {
   requestAnimationFrame(animate);
   mesh.rotation.y += 0.003;
@@ -43,9 +43,10 @@ function animate() {
 }
 animate();
 
-// Responsive
 window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
+  const w = window.innerWidth;
+  const h = window.innerHeight;
+  camera.aspect = w / h;
   camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
+  renderer.setSize(w, h);
 });
