@@ -38,19 +38,19 @@ export function AboutSection() {
 
             <div className="mt-10 grid grid-cols-3 gap-8 border-t border-border pt-10">
               <div>
-                <p className="font-mono text-2xl font-bold text-coral">3+</p>
+                <p className="font-mono text-2xl font-bold text-coral">2.5</p>
                 <p className="mt-1 font-mono text-xs text-muted-foreground uppercase">
                   {t("about.yearsDev")}
                 </p>
               </div>
               <div>
-                <p className="font-mono text-2xl font-bold text-turquoise">10+</p>
+                <p className="font-mono text-2xl font-bold text-turquoise">6</p>
                 <p className="mt-1 font-mono text-xs text-muted-foreground uppercase">
                   {t("about.projectsBuilt")}
                 </p>
               </div>
               <div>
-                <p className="font-mono text-2xl font-bold text-coral">5</p>
+                <p className="font-mono text-2xl font-bold text-coral">4</p>
                 <p className="mt-1 font-mono text-xs text-muted-foreground uppercase">
                   {t("about.languages")}
                 </p>
