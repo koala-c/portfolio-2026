@@ -5,13 +5,14 @@ import { useI18n } from "@/lib/i18n";
 
 export function HeroSection() {
   const { t } = useI18n();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/hero-portrait.jpg"
+          src={`${basePath}/images/hero-portrait.jpg`}
           alt=""
           fill
           className="object-cover opacity-40"

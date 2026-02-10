@@ -5,6 +5,7 @@ import { useI18n } from "@/lib/i18n";
 
 export function AboutSection() {
   const { t } = useI18n();
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
   return (
     <section id="about" className="py-32">
@@ -13,7 +14,7 @@ export function AboutSection() {
           {/* Image */}
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
-              src="/images/hero-portrait.jpg"
+              src={`${basePath}/images/hero-portrait.jpg`}
               alt={t("about.portrait")}
               fill
               className="object-cover"
