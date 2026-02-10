@@ -1,18 +1,19 @@
 "use client";
 
-import { ExternalLink, Linkedin } from "lucide-react";
+import { ExternalLink, Linkedin, MapPin } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 const projectMeta = [
-  { tags: ["Ionic", "Angular", "React Native", "Firebase"], year: "2025", link: "#" },
-  { tags: ["Flutter", "Figma", "UI/UX"], year: "2024", link: "#" },
-  { tags: ["Ionic", "Angular", ".NET MAUI", "ERP"], year: "2022-23", link: "#" },
-  { tags: ["Hardware", "Software", "Customer Service"], year: "2018-21", link: "#" },
+  { tags: ["Ionic", "Angular", "React Native", "Firebase"], link: "#" },
+  { tags: ["Flutter", "Figma", "UI/UX"], link: "#" },
+  { tags: ["Ionic", "Angular", ".NET MAUI", "ERP"], link: "#" },
+  { tags: ["Hardware", "Software", "Customer Service"], link: "#" },
 ];
 
 export function CodeSection() {
   const { t, tArray } = useI18n();
   const projectTranslations = tArray("code.projects");
+  const projectMetaTranslations = tArray("code.meta");
 
   return (
     <section id="code" className="border-t border-border py-32">
@@ -40,6 +41,7 @@ export function CodeSection() {
         <div className="mt-16 space-y-0">
           {projectMeta.map((project, index) => {
             const translated = projectTranslations[index];
+            const meta = projectMetaTranslations[index];
             return (
               <a
                 key={translated?.title ?? index}
@@ -70,9 +72,13 @@ export function CodeSection() {
                   ))}
                 </div>
 
-                <span className="font-mono text-xs text-muted-foreground">
-                  {project.year}
-                </span>
+                <div className="flex flex-col items-start gap-1 font-mono text-xs text-muted-foreground">
+                  <span>{meta?.year}</span>
+                  <span className="flex items-center gap-1">
+                    <MapPin className="h-3 w-3" />
+                    {meta?.location}
+                  </span>
+                </div>
 
                 <ExternalLink className="h-4 w-4 text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100" />
               </a>

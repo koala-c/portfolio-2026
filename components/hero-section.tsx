@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
@@ -26,7 +26,7 @@ export function HeroSection() {
             {t("hero.tagline")}
           </p>
           <h1 className="animate-fade-in-up animation-delay-200 mt-6 text-5xl font-bold leading-tight tracking-tight text-foreground opacity-0 md:text-7xl lg:text-8xl text-balance">
-            Denise Galloni
+            Denise Evelyn Galloni
           </h1>
           <p className="animate-fade-in-up animation-delay-400 mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground opacity-0 md:text-xl">
             {t("hero.description")}
@@ -60,3 +60,4 @@ export function HeroSection() {
     </section>
   );
 }
+

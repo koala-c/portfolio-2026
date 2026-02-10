@@ -7,7 +7,7 @@ const socialLinks = [
   { label: "GitHub", href: "https://github.com/koala-c/", icon: Github },
   { label: "Instagram", href: "#", icon: Instagram },
   { label: "Spotify", href: "#", icon: Music },
-  { label: "Email", href: "mailto:hello@denisegalloni.com", icon: Mail },
+  { label: "Email", href: "mailto:evelyngalloni@gmail.com", icon: Mail },
 ];
 
 export function ContactSection() {
@@ -51,10 +51,10 @@ export function ContactSection() {
                   {t("contact.email")}
                 </p>
                 <a
-                  href="mailto:hello@denisegalloni.com"
+                  href="mailto:evelyngalloni@gmail.com"
                   className="mt-2 block text-lg text-foreground transition-colors hover:text-primary"
                 >
-                  hello@denisegalloni.com
+                  evelyngalloni@gmail.com
                 </a>
               </div>
               <div>

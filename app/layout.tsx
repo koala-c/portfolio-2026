@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -18,9 +18,9 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Denise Galloni — Developer, Photographer, Musician",
+  title: "Denise Evelyn Galloni — Developer, Photographer, Musician",
   description:
-    "Portfolio of Denise Galloni — a creative polymath building at the intersection of code, light, and sound.",
+    "Portfolio of Denise Evelyn Galloni — a creative polymath building at the intersection of code, light, and sound.",
 };
 
 export const viewport: Viewport = {
@@ -47,3 +47,4 @@ export default function RootLayout({
     </html>
   );
 }
+

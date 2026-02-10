@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
 
@@ -34,27 +34,33 @@ const translations = {
     "about.yearsDev": "Years in Tech",
     "about.projectsBuilt": "Projects Built",
     "about.languages": "Languages",
-    "about.portrait": "Denise Galloni portrait",
+    "about.portrait": "Denise Evelyn Galloni portrait",
 
     "code.label": "Experience",
     "code.heading": "Professional experience",
     "code.github": "View LinkedIn",
+    "code.meta": [
+      { year: "2025 (7 months)", location: "Girona, Spain" },
+      { year: "2024 (6 months)", location: "Schroon Lake, NY, USA" },
+      { year: "2022-23 (1 year 4 months)", location: "Girona, Spain" },
+      { year: "2018-21 (3 years 6 months)", location: "Girona, Spain" },
+    ],
     "code.projects": [
       {
         title: "MyChefTool",
-        description: "Full Stack Developer. Built hospitality apps with Ionic/Angular, JavaScript, and React Native. Managed non-relational databases with Firebase. Jan 2025 - Jul 2025.",
+        description: "Full Stack Developer. Built hospitality apps with Ionic/Angular, JavaScript, and React Native. Managed non-relational databases with Firebase.",
       },
       {
         title: "Word of Life Fellowship",
-        description: "Full Stack Developer. Designed the English Cafe app in Figma and developed its initial version in Flutter. Schroon Lake, NY. Jun 2024 - Nov 2024.",
+        description: "Full Stack Developer. Designed the English Cafe app in Figma and developed its initial version in Flutter.",
       },
       {
         title: "Danzai Software",
-        description: "Software Developer. Built hospitality apps with Ionic/Angular and .NET MAUI. Managed ERP configuration and databases. Apr 2022 - Jul 2023.",
+        description: "Software Developer. Built hospitality apps with Ionic/Angular and .NET MAUI. Managed ERP configuration and databases.",
       },
       {
         title: "Copylowcost",
-        description: "Digital printing, document scanning & editing, machine operation, hardware and software repair, POS installation and customer service. Jan 2018 - Jun 2021.",
+        description: "Digital printing, document scanning & editing, machine operation, hardware and software repair, POS installation and customer service.",
       },
     ],
 
@@ -118,27 +124,33 @@ const translations = {
     "about.yearsDev": "Años en Tech",
     "about.projectsBuilt": "Proyectos",
     "about.languages": "Idiomas",
-    "about.portrait": "Retrato de Denise Galloni",
+    "about.portrait": "Retrato de Denise Evelyn Galloni",
 
     "code.label": "Experiencia",
     "code.heading": "Experiencia profesional",
     "code.github": "Ver LinkedIn",
+    "code.meta": [
+      { year: "2025 (7 meses)", location: "Girona, España" },
+      { year: "2024 (6 meses)", location: "Schroon Lake, NY, USA" },
+      { year: "2022-23 (1 año 4 meses)", location: "Girona, España" },
+      { year: "2018-21 (3 años 6 meses)", location: "Girona, España" },
+    ],
     "code.projects": [
       {
         title: "MyChefTool",
-        description: "Desarrolladora Full Stack. Desarrollo de aplicaciones de hostelería con Ionic/Angular, JavaScript y React Native. Gestión de bases de datos no relacionales con Firebase. Ene 2025 - Jul 2025.",
+        description: "Desarrolladora Full Stack. Desarrollo de aplicaciones de hostelería con Ionic/Angular, JavaScript y React Native. Gestión de bases de datos no relacionales con Firebase.",
       },
       {
         title: "Word of Life Fellowship",
-        description: "Desarrolladora Full Stack. Diseño de la app English Cafe en Figma y desarrollo de la versión inicial en Flutter. Schroon Lake, NY. Jun 2024 - Nov 2024.",
+        description: "Desarrolladora Full Stack. Diseño de la app English Cafe en Figma y desarrollo de la versión inicial en Flutter.",
       },
       {
         title: "Danzai Software",
-        description: "Desarrolladora de Software. Desarrollo de aplicaciones de hostelería con Ionic/Angular y .NET MAUI. Configuración de ERP y gestión de bases de datos. Abr 2022 - Jul 2023.",
+        description: "Desarrolladora de Software. Desarrollo de aplicaciones de hostelería con Ionic/Angular y .NET MAUI. Configuración de ERP y gestión de bases de datos.",
       },
       {
         title: "Copylowcost",
-        description: "Impresión digital, escaneo y edición de documentos, operación de máquinas, reparación de hardware y software, instalación de TPV y atención al cliente. Ene 2018 - Jun 2021.",
+        description: "Impresión digital, escaneo y edición de documentos, operación de máquinas, reparación de hardware y software, instalación de TPV y atención al cliente.",
       },
     ],
 
@@ -202,27 +214,33 @@ const translations = {
     "about.yearsDev": "Anys en Tech",
     "about.projectsBuilt": "Projectes",
     "about.languages": "Idiomes",
-    "about.portrait": "Retrat de Denise Galloni",
+    "about.portrait": "Retrat de Denise Evelyn Galloni",
 
     "code.label": "Experiència",
     "code.heading": "Experiència professional",
     "code.github": "Veure LinkedIn",
+    "code.meta": [
+      { year: "2025 (7 mesos)", location: "Girona, Espanya" },
+      { year: "2024 (6 mesos)", location: "Schroon Lake, NY, USA" },
+      { year: "2022-23 (1 any 4 mesos)", location: "Girona, Espanya" },
+      { year: "2018-21 (3 anys 6 mesos)", location: "Girona, Espanya" },
+    ],
     "code.projects": [
       {
         title: "MyChefTool",
-        description: "Desenvolupadora Full Stack. Desenvolupament d'aplicacions d'hostaleria amb Ionic/Angular, JavaScript i React Native. Gestió de bases de dades no relacionals amb Firebase. Gen 2025 - Jul 2025.",
+        description: "Desenvolupadora Full Stack. Desenvolupament d'aplicacions d'hostaleria amb Ionic/Angular, JavaScript i React Native. Gestió de bases de dades no relacionals amb Firebase.",
       },
       {
         title: "Word of Life Fellowship",
-        description: "Desenvolupadora Full Stack. Disseny de l'app English Cafe a Figma i desenvolupament de la versió inicial en Flutter. Schroon Lake, NY. Jun 2024 - Nov 2024.",
+        description: "Desenvolupadora Full Stack. Disseny de l'app English Cafe a Figma i desenvolupament de la versió inicial en Flutter.",
       },
       {
         title: "Danzai Software",
-        description: "Desenvolupadora de Software. Desenvolupament d'aplicacions d'hostaleria amb Ionic/Angular i .NET MAUI. Configuració d'ERP i gestió de bases de dades. Abr 2022 - Jul 2023.",
+        description: "Desenvolupadora de Software. Desenvolupament d'aplicacions d'hostaleria amb Ionic/Angular i .NET MAUI. Configuració d'ERP i gestió de bases de dades.",
       },
       {
         title: "Copylowcost",
-        description: "Impressió digital, escaneig i edició de documents, operació de màquines, reparació de hardware i software, instal·lació de TPV i atenció al client. Gen 2018 - Jun 2021.",
+        description: "Impressió digital, escaneig i edició de documents, operació de màquines, reparació de hardware i software, instal·lació de TPV i atenció al client.",
       },
     ],
 
@@ -286,27 +304,33 @@ const translations = {
     "about.yearsDev": "Anni in Tech",
     "about.projectsBuilt": "Progetti",
     "about.languages": "Lingue",
-    "about.portrait": "Ritratto di Denise Galloni",
+    "about.portrait": "Ritratto di Denise Evelyn Galloni",
 
     "code.label": "Esperienza",
     "code.heading": "Esperienza professionale",
     "code.github": "Vedi LinkedIn",
+    "code.meta": [
+      { year: "2025 (7 mesi)", location: "Girona, Spagna" },
+      { year: "2024 (6 mesi)", location: "Schroon Lake, NY, USA" },
+      { year: "2022-23 (1 anno 4 mesi)", location: "Girona, Spagna" },
+      { year: "2018-21 (3 anni 6 mesi)", location: "Girona, Spagna" },
+    ],
     "code.projects": [
       {
         title: "MyChefTool",
-        description: "Sviluppatrice Full Stack. Sviluppo di app per la ristorazione con Ionic/Angular, JavaScript e React Native. Gestione di database non relazionali con Firebase. Gen 2025 - Lug 2025.",
+        description: "Sviluppatrice Full Stack. Sviluppo di app per la ristorazione con Ionic/Angular, JavaScript e React Native. Gestione di database non relazionali con Firebase.",
       },
       {
         title: "Word of Life Fellowship",
-        description: "Sviluppatrice Full Stack. Design dell'app English Cafe in Figma e sviluppo della versione iniziale in Flutter. Schroon Lake, NY. Giu 2024 - Nov 2024.",
+        description: "Sviluppatrice Full Stack. Design dell'app English Cafe in Figma e sviluppo della versione iniziale in Flutter.",
       },
       {
         title: "Danzai Software",
-        description: "Sviluppatrice Software. Sviluppo di app per la ristorazione con Ionic/Angular e .NET MAUI. Configurazione ERP e gestione database. Apr 2022 - Lug 2023.",
+        description: "Sviluppatrice Software. Sviluppo di app per la ristorazione con Ionic/Angular e .NET MAUI. Configurazione ERP e gestione database.",
       },
       {
         title: "Copylowcost",
-        description: "Stampa digitale, scansione e modifica documenti, operazione macchine, riparazione hardware e software, installazione POS e servizio clienti. Gen 2018 - Giu 2021.",
+        description: "Stampa digitale, scansione e modifica documenti, operazione macchine, riparazione hardware e software, installazione POS e servizio clienti.",
       },
     ],
 
@@ -404,3 +428,5 @@ export function useI18n() {
   }
   return context;
 }
+
+
