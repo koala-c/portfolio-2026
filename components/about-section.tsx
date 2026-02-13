@@ -17,7 +17,7 @@ export function AboutSection() {
               src={`${basePath}/images/hero-portrait.jpg`}
               alt={t("about.portrait")}
               fill
-              className="object-cover"
+              className="object-cover object-[20%_18%]"
             />
             <div className="absolute inset-0 border border-border" />
           </div>

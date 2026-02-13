@@ -34,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} ${spaceMono.variable}`} suppressHydrationWarning>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"

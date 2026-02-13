@@ -14,6 +14,7 @@ export const localeLabels: Record<Locale, string> = {
 const translations = {
   en: {
     "nav.about": "About",
+    "nav.education": "Education",
     "nav.code": "Code",
     "nav.photography": "Photography",
     "nav.music": "Music",
@@ -25,6 +26,7 @@ const translations = {
     "hero.viewWork": "View Work",
     "hero.getInTouch": "Get in Touch",
     "hero.scroll": "Scroll",
+    "marquee.items": "React Native|Angular|Flutter|Ionic|JavaScript|TypeScript|.NET|PHP / Laravel|Firebase|PostgreSQL|Figma|Unity|Photography|Violin|Git / GitHub|Scrum|Docker|Kanban|Google Cloud|Java|C# / .NET|Kotlin|Python|MongoDB|NoSQL|Jira|HTML5 / CSS|First Aid|Group Facilitation|Biblical Counseling|Hermeneutics|PC Assembly|Microsoft Office|Networking|Cybersecurity|Server Administration|Web Apps|Programming|Databases|Markup Languages|Computer Systems|2D / 3D Design|Video Recording|Video Editing",
 
     "about.label": "About",
     "about.heading": "Code, light, and sound.",
@@ -35,6 +37,10 @@ const translations = {
     "about.projectsBuilt": "Projects Built",
     "about.languages": "Languages",
     "about.portrait": "Denise Evelyn Galloni portrait",
+    "qualities.label": "Personal Qualities",
+    "qualities.heading": "How I work",
+    "qualities.description": "These strengths shape the way I collaborate, make decisions, and deliver consistent results across projects.",
+    "qualities.list": "Communicative and transparent|Observant|Strong teamwork skills|Fast learner|Adaptable to change|Perfectionist mindset|Open to learning any role|Problem-solving|Critical thinking|Organization and time management|Responsibility and commitment|Proactivity and initiative|Empathy and active listening|Attention to detail|Prioritization skills|Results-oriented mindset|Autonomy|Curiosity and continuous improvement",
 
     "code.label": "Experience",
     "code.heading": "Professional experience",
@@ -88,7 +94,7 @@ const translations = {
 
     "contact.label": "Contact",
     "contact.heading": "Let's build something together.",
-    "contact.description": "Whether you need a developer for your next project, a photographer for your brand, or a musician for your event -- I'd love to hear from you.",
+    "contact.description": "Whether you need a developer for your next project, a photographer for your brand, or a musician for your event. I'd love to hear from you.",
     "contact.email": "Email",
     "contact.location": "Location",
     "contact.locationValue": "Girona, Catalonia, Spain",
@@ -100,11 +106,34 @@ const translations = {
 
     "education.label": "Education",
     "education.heading": "Academic background",
+    "education.items": [
+      {
+        title: "Computer Science (Institut Rafael Campalans / Institut de Vidreres)",
+        description:
+          "CFGS, Web Application Development with a Virtual Reality and Web Video Games curriculum adaptation (EQF 5; UK approx.: Level 5 HTQ/HND/Foundation Degree; US approx.: Associate degree in a technical field) / 2023-2024\nCFGS, Multiplatform Application Development with a Professional Profile in Video Games and Digital Leisure (EQF 5; UK approx.: Level 5 HTQ/HND/Foundation Degree; US approx.: Associate degree in a technical field) / 2021-2023\nCFGM, Microcomputer Systems and Networks (EQF 4; UK approx.: Level 4 HNC/Level 4 Diploma; US approx.: postsecondary technical diploma or early Associate-level coursework) / 2015-2017",
+      },
+      {
+        title: "Bible Institute (Word of Life Argentina · online mode)",
+        description:
+          "Theological Course (2nd and 3rd year) / 2025-2026\nBasic Course / 2020-2021",
+      },
+      {
+        title: "Youth Activities Monitor (Escola l'Emporda)",
+        description:
+          "School lunch monitor / 2025-2026\nFood handling / 2025\nChild and youth leisure activities monitor / 2024",
+      },
+      {
+        title: "Complementary Training (Non-formal courses)",
+        description:
+          "Category B driving license / 2021",
+      },
+    ],
   },
 
   es: {
     "nav.about": "Sobre mí",
-    "nav.code": "Experiència",
+    "nav.education": "Estudios",
+    "nav.code": "Experiencia",
     "nav.photography": "Fotografía",
     "nav.music": "Música",
     "nav.contact": "Contacto",
@@ -115,6 +144,7 @@ const translations = {
     "hero.viewWork": "Ver Trabajo",
     "hero.getInTouch": "Contactar",
     "hero.scroll": "Deslizar",
+    "marquee.items": "React Native|Angular|Flutter|Ionic|JavaScript|TypeScript|.NET|PHP / Laravel|Firebase|PostgreSQL|Figma|Unity|Fotografía|Violín|Git / GitHub|Scrum|Docker|Kanban|Google Cloud|Java|C# / .NET|Kotlin|Python|MongoDB|NoSQL|Jira|HTML5 / CSS|Primeros auxilios|Dinamización de grupos|Aconsejamiento bíblico|Hermenéutica|Montaje de ordenadores|Microsoft Office|Redes|Ciberseguridad|Administración de servidores|Aplicaciones web|Programación|Bases de datos|Lenguajes de marcas|Sistemas informáticos|Diseño 2D / 3D|Grabación de vídeo|Edición de vídeo",
 
     "about.label": "Sobre mí",
     "about.heading": "Código, luz y sonido.",
@@ -125,6 +155,10 @@ const translations = {
     "about.projectsBuilt": "Proyectos",
     "about.languages": "Idiomas",
     "about.portrait": "Retrato de Denise Evelyn Galloni",
+    "qualities.label": "Cualidades Personales",
+    "qualities.heading": "Cómo trabajo",
+    "qualities.description": "Estas cualidades definen mi forma de colaborar, tomar decisiones y mantener resultados consistentes en distintos proyectos.",
+    "qualities.list": "Comunicativa y transparente|Observadora|Facilidad para trabajar en equipo|Aprendizaje rápido|Capacidad de adaptación a los cambios|Carácter perfeccionista|Dispuesta a aprender cualquier trabajo|Resolución de problemas|Pensamiento crítico|Organización y gestión del tiempo|Responsabilidad y compromiso|Proactividad e iniciativa|Empatía y escucha activa|Atención al detalle|Capacidad de priorización|Orientación a resultados|Autonomía|Curiosidad y mejora continua",
 
     "code.label": "Experiencia",
     "code.heading": "Experiencia profesional",
@@ -178,7 +212,7 @@ const translations = {
 
     "contact.label": "Contacto",
     "contact.heading": "Construyamos algo juntos.",
-    "contact.description": "Ya sea que necesites una desarrolladora para tu próximo proyecto, una fotógrafa para tu marca, o una música para tu evento -- me encantaría saber de ti.",
+    "contact.description": "Ya sea que necesites una desarrolladora para tu próximo proyecto, una fotógrafa para tu marca, o una música para tu evento. Me encantaría saber de ti.",
     "contact.email": "Correo",
     "contact.location": "Ubicación",
     "contact.locationValue": "Girona, Cataluña, España",
@@ -188,13 +222,36 @@ const translations = {
     "footer.rights": "Todos los derechos reservados.",
     "footer.builtWith": "Hecho con Next.js y Tailwind CSS",
 
-    "education.label": "Educación",
+    "education.label": "Estudios",
     "education.heading": "Formación académica",
+    "education.items": [
+      {
+        title: "Informática (Institut Rafael Campalans / Institut de Vidreres)",
+        description:
+          "CFGS, Desarrollo de Aplicaciones Web con adaptación curricular de Realidad Virtual y Videojuegos Web / 2023-2024\nCFGS, Desarrollo de Aplicaciones Multiplataforma con Perfil Profesional en Videojuegos y Ocio Digital / 2021-2023\nCFGM, Sistemas Microinformáticos y Redes / 2015-2017",
+      },
+      {
+        title: "Instituto Bíblico (Palabra de Vida Argentina · modalidad online)",
+        description:
+          "Curso Teológico (2º y 3º año) / 2025-2026\nCurso Básico / 2020-2021",
+      },
+      {
+        title: "Monitora (Escola l'Empordà)",
+        description:
+          "Monitora de comedor / 2025-2026\nManipulación de alimentos / 2025\nMonitora de actividades de ocio infantil y juvenil / 2024",
+      },
+      {
+        title: "Formación complementaria (Cursos no reglados)",
+        description:
+          "Carnet de conducir B / 2021",
+      },
+    ],
   },
 
   cat: {
     "nav.about": "Sobre mi",
-    "nav.code": "Experiencia",
+    "nav.education": "Estudis",
+    "nav.code": "Experiència",
     "nav.photography": "Fotografia",
     "nav.music": "Música",
     "nav.contact": "Contacte",
@@ -205,6 +262,7 @@ const translations = {
     "hero.viewWork": "Veure Treball",
     "hero.getInTouch": "Contactar",
     "hero.scroll": "Desplacar",
+    "marquee.items": "React Native|Angular|Flutter|Ionic|JavaScript|TypeScript|.NET|PHP / Laravel|Firebase|PostgreSQL|Figma|Unity|Fotografia|Violí|Git / GitHub|Scrum|Docker|Kanban|Google Cloud|Java|C# / .NET|Kotlin|Python|MongoDB|NoSQL|Jira|HTML5 / CSS|Primers auxilis|Dinamització de grups|Aconsegellament bíblic|Hermenèutica|Muntatge d'ordinadors|Microsoft Office|Xarxes|Ciberseguretat|Administració de servidors|Aplicacions web|Programació|Bases de dades|Llenguatges de marques|Sistemes informàtics|Disseny 2D / 3D|Gravació de vídeo|Edició de vídeo",
 
     "about.label": "Sobre mi",
     "about.heading": "Codi, llum i so.",
@@ -215,6 +273,10 @@ const translations = {
     "about.projectsBuilt": "Projectes",
     "about.languages": "Idiomes",
     "about.portrait": "Retrat de Denise Evelyn Galloni",
+    "qualities.label": "Qualitats Personals",
+    "qualities.heading": "Com treballo",
+    "qualities.description": "Aquestes qualitats defineixen la meva manera de col·laborar, prendre decisions i mantenir resultats consistents en diferents projectes.",
+    "qualities.list": "Comunicativa i transparent|Observadora|Facilitat per treballar en equip|Aprenentatge ràpid|Capacitat d'adaptació als canvis|Caràcter perfeccionista|Disposada a aprendre qualsevol feina|Resolució de problemes|Pensament crític|Organització i gestió del temps|Responsabilitat i compromís|Proactivitat i iniciativa|Empatia i escolta activa|Atenció al detall|Capacitat de priorització|Orientació a resultats|Autonomia|Curiositat i millora contínua",
 
     "code.label": "Experiència",
     "code.heading": "Experiència professional",
@@ -268,7 +330,7 @@ const translations = {
 
     "contact.label": "Contacte",
     "contact.heading": "Construïm quelcom junts.",
-    "contact.description": "Tant si necessites una desenvolupadora per al teu proper projecte, una fotògrafa per a la teva marca, o una música per al teu event -- m'encantaria saber de tu.",
+    "contact.description": "Tant si necessites una desenvolupadora per al teu proper projecte, una fotògrafa per a la teva marca, o una música per al teu event. M'encantaria saber de tu.",
     "contact.email": "Correu",
     "contact.location": "Ubicació",
     "contact.locationValue": "Girona, Catalunya, Espanya",
@@ -280,10 +342,33 @@ const translations = {
 
     "education.label": "Educació",
     "education.heading": "Formació acadèmica",
+    "education.items": [
+      {
+        title: "Informàtica (Institut Rafael Campalans / Institut de Vidreres)",
+        description:
+          "CFGS, Desenvolupament d'Aplicacions Web amb adaptació curricular de Realitat Virtual i Videojocs Web / 2023-2024\nCFGS, Desenvolupament d'Aplicacions Multiplataforma amb Perfil Professional en Videojocs i Oci Digital / 2021-2023\nCFGM, Sistemes Microinformàtics i Xarxes / 2015-2017",
+      },
+      {
+        title: "Institut Bíblic (Paraula de Vida Argentina · modalitat en línia)",
+        description:
+          "Curs Teològic (2n i 3r any) / 2025-2026\nCurs Bàsic / 2020-2021",
+      },
+      {
+        title: "Monitora (Escola l'Empordà)",
+        description:
+          "Monitora de menjador / 2025-2026\nManipulació d'aliments / 2025\nMonitora d'activitats de lleure infantil i juvenil / 2024",
+      },
+      {
+        title: "Formació complementària (Cursos no reglats)",
+        description:
+          "Carnet de conduir B / 2021",
+      },
+    ],
   },
 
   it: {
     "nav.about": "Chi sono",
+    "nav.education": "Studi",
     "nav.code": "Esperienza",
     "nav.photography": "Fotografia",
     "nav.music": "Musica",
@@ -295,6 +380,7 @@ const translations = {
     "hero.viewWork": "Vedi Lavori",
     "hero.getInTouch": "Contattami",
     "hero.scroll": "Scorri",
+    "marquee.items": "React Native|Angular|Flutter|Ionic|JavaScript|TypeScript|.NET|PHP / Laravel|Firebase|PostgreSQL|Figma|Unity|Fotografia|Violino|Git / GitHub|Scrum|Docker|Kanban|Google Cloud|Java|C# / .NET|Kotlin|Python|MongoDB|NoSQL|Jira|HTML5 / CSS|Primo soccorso|Dinamizzazione dei gruppi|Consulenza biblica|Ermeneutica|Assemblaggio PC|Microsoft Office|Reti|Sicurezza informatica|Amministrazione di server|Applicazioni web|Programmazione|Basi di dati|Linguaggi di markup|Sistemi informatici|Design 2D / 3D|Registrazione video|Montaggio video",
 
     "about.label": "Chi sono",
     "about.heading": "Codice, luce e suono.",
@@ -305,6 +391,10 @@ const translations = {
     "about.projectsBuilt": "Progetti",
     "about.languages": "Lingue",
     "about.portrait": "Ritratto di Denise Evelyn Galloni",
+    "qualities.label": "Qualità Personali",
+    "qualities.heading": "Come lavoro",
+    "qualities.description": "Queste qualità definiscono il mio modo di collaborare, prendere decisioni e mantenere risultati costanti in progetti diversi.",
+    "qualities.list": "Comunicativa e trasparente|Osservatrice|Facilità nel lavoro di squadra|Apprendimento rapido|Capacità di adattamento ai cambiamenti|Carattere perfezionista|Disponibile a imparare qualsiasi lavoro|Problem solving|Pensiero critico|Organizzazione e gestione del tempo|Responsabilità e impegno|Proattività e iniziativa|Empatia e ascolto attivo|Attenzione ai dettagli|Capacità di prioritizzazione|Orientamento ai risultati|Autonomia|Curiosità e miglioramento continuo",
 
     "code.label": "Esperienza",
     "code.heading": "Esperienza professionale",
@@ -351,14 +441,14 @@ const translations = {
     "music.heading": "Il violino e oltre",
     "music.description": "La musica è stata una costante nella mia vita. Come violinista, esploro il repertorio classico e collaborazioni contemporanee, fondendo calore acustico con espressione creativa.",
     "music.latestRelease": "Sulla Mia Musica",
-    "music.albumDescription": "Il violino e il mio strumento di espressione. Sono appassionata nell'esplorare la connessione tra musica e tecnologia, sempre alla ricerca di nuovi modi per creare e condividere.",
+    "music.albumDescription": "Il violino è il mio strumento di espressione. Sono appassionata nell'esplorare la connessione tra musica e tecnologia, sempre alla ricerca di nuovi modi per creare e condividere.",
     "music.listenSpotify": "Prossimamente",
     "music.trackHeader": "Brano",
     "music.durationHeader": "Stile",
 
     "contact.label": "Contatti",
     "contact.heading": "Costruiamo qualcosa insieme.",
-    "contact.description": "Che tu abbia bisogno di una sviluppatrice per il tuo prossimo progetto, una fotografa per il tuo brand, o una musicista per il tuo evento -- mi piacerebbe sentirti.",
+    "contact.description": "Che tu abbia bisogno di una sviluppatrice per il tuo prossimo progetto, una fotografa per il tuo brand, o una musicista per il tuo evento. Mi piacerebbe sentirti.",
     "contact.email": "Email",
     "contact.location": "Posizione",
     "contact.locationValue": "Girona, Catalogna, Spagna",
@@ -370,6 +460,28 @@ const translations = {
 
     "education.label": "Formazione",
     "education.heading": "Percorso accademico",
+    "education.items": [
+      {
+        title: "Informatica (Institut Rafael Campalans / Institut de Vidreres)",
+        description:
+          "CFGS, Sviluppo di Applicazioni Web con adattamento curricolare in Realtà Virtuale e Videogiochi Web (EQF 5; equivalenza Italia: percorso ITS Academy di area ICT, livello terziario professionalizzante) / 2023-2024\nCFGS, Sviluppo di Applicazioni Multipiattaforma con Profilo Professionale in Videogiochi e Svago Digitale (EQF 5; equivalenza Italia: percorso ITS Academy di area ICT, livello terziario professionalizzante) / 2021-2023\nCFGM, Sistemi Microinformatici e Reti (EQF 4; equivalenza Italia: diploma professionale IeFP, quarto anno) / 2015-2017",
+      },
+      {
+        title: "Istituto Biblico (Parola di Vita Argentina · modalità online)",
+        description:
+          "Corso Teologico (2º e 3º anno) / 2025-2026\nCorso Base / 2020-2021",
+      },
+      {
+        title: "Monitrice (Escola l'Empordà)",
+        description:
+          "Monitrice di mensa / 2025-2026\nManipolazione degli alimenti / 2025\nMonitrice di attività ricreative per bambini e giovani / 2024",
+      },
+      {
+        title: "Formazione complementare (Corsi non regolati)",
+        description:
+          "Patente di guida B / 2021",
+      },
+    ],
   },
 } as const;
 

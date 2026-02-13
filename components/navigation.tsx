@@ -24,6 +24,7 @@ export function Navigation() {
 
   const navLinks = [
     { label: t("nav.about"), href: "#about" },
+    { label: t("nav.education"), href: "#education" },
     { label: t("nav.code"), href: "#code" },
     { label: t("nav.photography"), href: "#photography" },
     { label: t("nav.music"), href: "#music" },

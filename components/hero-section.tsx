@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
@@ -15,7 +15,7 @@ export function HeroSection() {
           src={`${basePath}/images/hero-portrait.jpg`}
           alt=""
           fill
-          className="object-cover opacity-40"
+          className="object-cover object-[20%_18%] opacity-40 sm:object-[26%_17%] md:object-[36%_16%] lg:object-[40%_14%] xl:object-[38%_14%]"
           priority
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />

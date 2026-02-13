@@ -1,22 +1,13 @@
+"use client";
+
+import { useI18n } from "@/lib/i18n";
+
 export function MarqueeBand() {
-  const items = [
-    "React Native",
-    "Angular",
-    "Flutter",
-    "Ionic",
-    "JavaScript",
-    "TypeScript",
-    ".NET",
-    "PHP / Laravel",
-    "Firebase",
-    "PostgreSQL",
-    "Figma",
-    "Unity",
-    "Photography",
-    "Violin",
-    "Git / GitHub",
-    "Scrum",
-  ];
+  const { t } = useI18n();
+  const items = t("marquee.items")
+    .split("|")
+    .map((item) => item.trim())
+    .filter(Boolean);
 
   return (
     <div className="overflow-hidden border-y border-border bg-secondary py-4">

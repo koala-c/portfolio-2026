@@ -6,12 +6,12 @@ import { X } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 const photos = [
-  { src: "/images/photo-1.jpg", alt: "Golden hour mountain landscape", categoryKey: "Landscape" },
-  { src: "/images/photo-2.jpg", alt: "Urban night street scene", categoryKey: "Street" },
-  { src: "/images/photo-3.jpg", alt: "Abstract architecture detail", categoryKey: "Architecture" },
-  { src: "/images/photo-4.jpg", alt: "Atmospheric forest portrait", categoryKey: "Portrait" },
-  { src: "/images/photo-5.jpg", alt: "Vintage camera still life", categoryKey: "Still Life" },
-  { src: "/images/photo-6.jpg", alt: "Dramatic ocean seascape", categoryKey: "Landscape" },
+  { src: "/placeholder.svg", alt: "Golden hour mountain landscape", categoryKey: "Landscape" },
+  { src: "/placeholder.svg", alt: "Urban night street scene", categoryKey: "Street" },
+  { src: "/placeholder.svg", alt: "Abstract architecture detail", categoryKey: "Architecture" },
+  { src: "/placeholder.svg", alt: "Atmospheric forest portrait", categoryKey: "Portrait" },
+  { src: "/placeholder.svg", alt: "Vintage camera still life", categoryKey: "Still Life" },
+  { src: "/placeholder.svg", alt: "Dramatic ocean seascape", categoryKey: "Landscape" },
 ];
 
 export function PhotographySection() {
@@ -36,7 +36,7 @@ export function PhotographySection() {
           <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {photos.map((photo, index) => (
               <button
-                key={photo.src}
+                key={`${photo.src}-${index}`}
                 type="button"
                 onClick={() => setLightbox(index)}
                 className="group relative aspect-[4/3] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
@@ -110,7 +110,7 @@ export function PhotographySection() {
 
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
             <p className="font-mono text-xs text-muted-foreground">
-              {categories[photos[lightbox].categoryKey] ?? photos[lightbox].categoryKey} — {lightbox + 1} / {photos.length}
+              {categories[photos[lightbox].categoryKey] ?? photos[lightbox].categoryKey} - {lightbox + 1} / {photos.length}
             </p>
           </div>
         </div>
@@ -118,3 +118,4 @@ export function PhotographySection() {
     </>
   );
 }
+
