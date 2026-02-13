@@ -18,9 +18,27 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Denise Evelyn Galloni — Developer, Photographer, Musician",
+  title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",
   description:
-    "Portfolio of Denise Evelyn Galloni — a creative polymath building at the intersection of code, light, and sound.",
+    "Portfolio de Denise Evelyn Galloni — una creadora multidisciplinar que trabaja en la intersección entre código, luz y sonido.",
+  icons: {
+    icon: "/images/logo.png",
+    shortcut: "/images/logo.png",
+    apple: "/images/logo.png",
+  },
+  openGraph: {
+    title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",
+    description:
+      "Portfolio de Denise Evelyn Galloni — una creadora multidisciplinar que trabaja en la intersección entre código, luz y sonido.",
+    locale: "es_ES",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",
+    description:
+      "Portfolio de Denise Evelyn Galloni — una creadora multidisciplinar que trabaja en la intersección entre código, luz y sonido.",
+  },
 };
 
 export const viewport: Viewport = {
