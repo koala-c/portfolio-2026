@@ -77,7 +77,7 @@ export function EducationSection() {
                                   title={equivalence}
                                 >
                                   <CircleHelp className="h-3.5 w-3.5" />
-                                  <span className="pointer-events-none absolute top-full left-0 z-20 mt-2 hidden w-72 border border-border bg-background p-2 text-xs leading-relaxed text-muted-foreground shadow-lg group-hover:block">
+                                  <span className="pointer-events-none absolute top-full right-0 z-20 mt-2 hidden w-72 max-w-[calc(100vw-2rem)] border border-border bg-background p-2 text-xs leading-relaxed text-muted-foreground shadow-lg group-hover:block sm:left-0 sm:right-auto">
                                     {equivalence}
                                   </span>
                                 </span>

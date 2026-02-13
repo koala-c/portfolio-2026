@@ -40,6 +40,9 @@ const translations = {
     "qualities.label": "Personal Qualities",
     "qualities.heading": "How I work",
     "qualities.description": "These strengths shape the way I collaborate, make decisions, and deliver consistent results across projects.",
+    "qualities.group1": "Collaboration",
+    "qualities.group2": "Execution",
+    "qualities.group3": "Mindset",
     "qualities.list": "Communicative and transparent|Observant|Strong teamwork skills|Fast learner|Adaptable to change|Perfectionist mindset|Open to learning any role|Problem-solving|Critical thinking|Organization and time management|Responsibility and commitment|Proactivity and initiative|Empathy and active listening|Attention to detail|Prioritization skills|Results-oriented mindset|Autonomy|Curiosity and continuous improvement",
 
     "code.label": "Experience",
@@ -158,6 +161,9 @@ const translations = {
     "qualities.label": "Cualidades Personales",
     "qualities.heading": "Cómo trabajo",
     "qualities.description": "Estas cualidades definen mi forma de colaborar, tomar decisiones y mantener resultados consistentes en distintos proyectos.",
+    "qualities.group1": "Colaboración",
+    "qualities.group2": "Ejecución",
+    "qualities.group3": "Mentalidad",
     "qualities.list": "Comunicativa y transparente|Observadora|Facilidad para trabajar en equipo|Aprendizaje rápido|Capacidad de adaptación a los cambios|Carácter perfeccionista|Dispuesta a aprender cualquier trabajo|Resolución de problemas|Pensamiento crítico|Organización y gestión del tiempo|Responsabilidad y compromiso|Proactividad e iniciativa|Empatía y escucha activa|Atención al detalle|Capacidad de priorización|Orientación a resultados|Autonomía|Curiosidad y mejora continua",
 
     "code.label": "Experiencia",
@@ -276,6 +282,9 @@ const translations = {
     "qualities.label": "Qualitats Personals",
     "qualities.heading": "Com treballo",
     "qualities.description": "Aquestes qualitats defineixen la meva manera de col·laborar, prendre decisions i mantenir resultats consistents en diferents projectes.",
+    "qualities.group1": "Col·laboració",
+    "qualities.group2": "Execució",
+    "qualities.group3": "Mentalitat",
     "qualities.list": "Comunicativa i transparent|Observadora|Facilitat per treballar en equip|Aprenentatge ràpid|Capacitat d'adaptació als canvis|Caràcter perfeccionista|Disposada a aprendre qualsevol feina|Resolució de problemes|Pensament crític|Organització i gestió del temps|Responsabilitat i compromís|Proactivitat i iniciativa|Empatia i escolta activa|Atenció al detall|Capacitat de priorització|Orientació a resultats|Autonomia|Curiositat i millora contínua",
 
     "code.label": "Experiència",
@@ -394,6 +403,9 @@ const translations = {
     "qualities.label": "Qualità Personali",
     "qualities.heading": "Come lavoro",
     "qualities.description": "Queste qualità definiscono il mio modo di collaborare, prendere decisioni e mantenere risultati costanti in progetti diversi.",
+    "qualities.group1": "Collaborazione",
+    "qualities.group2": "Esecuzione",
+    "qualities.group3": "Mentalità",
     "qualities.list": "Comunicativa e trasparente|Osservatrice|Facilità nel lavoro di squadra|Apprendimento rapido|Capacità di adattamento ai cambiamenti|Carattere perfezionista|Disponibile a imparare qualsiasi lavoro|Problem solving|Pensiero critico|Organizzazione e gestione del tempo|Responsabilità e impegno|Proattività e iniziativa|Empatia e ascolto attivo|Attenzione ai dettagli|Capacità di prioritizzazione|Orientamento ai risultati|Autonomia|Curiosità e miglioramento continuo",
 
     "code.label": "Esperienza",

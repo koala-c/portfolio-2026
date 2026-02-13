@@ -1,35 +1,13 @@
 "use client";
 
 import {
-  MessageCircle,
-  Eye,
   Users,
-  Zap,
-  Sparkles,
-  Lightbulb,
   ClipboardCheck,
   Target,
-  ShieldCheck,
-  Search,
-  Rocket,
-  Brain,
 } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
-const icons = [
-  MessageCircle,
-  Eye,
-  Users,
-  Zap,
-  Sparkles,
-  Lightbulb,
-  ClipboardCheck,
-  Target,
-  ShieldCheck,
-  Search,
-  Rocket,
-  Brain,
-];
+const groupIcons = [Users, ClipboardCheck, Target];
 
 export function QualitiesSection() {
   const { t } = useI18n();
@@ -37,6 +15,11 @@ export function QualitiesSection() {
     .split("|")
     .map((item) => item.trim())
     .filter(Boolean);
+  const groups = [
+    { title: t("qualities.group1"), items: qualities.slice(0, 6), Icon: groupIcons[0] },
+    { title: t("qualities.group2"), items: qualities.slice(6, 12), Icon: groupIcons[1] },
+    { title: t("qualities.group3"), items: qualities.slice(12), Icon: groupIcons[2] },
+  ];
 
   return (
     <section id="qualities" className="border-t border-border py-32">
@@ -51,16 +34,30 @@ export function QualitiesSection() {
           {t("qualities.description")}
         </p>
 
-        <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {qualities.map((quality, index) => {
-            const Icon = icons[index % icons.length];
+        <div className="mt-12 grid gap-4 lg:grid-cols-3">
+          {groups.map((group, index) => {
+            const Icon = group.Icon;
             return (
               <article
-                key={`${quality}-${index}`}
-                className="flex items-start gap-3 border border-border p-4"
+                key={`qualities-group-${index}`}
+                className="relative overflow-hidden border border-border/80 bg-card/40 p-5 shadow-[0_8px_30px_-20px_rgba(0,0,0,0.8)] backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:bg-card/60 md:p-6"
               >
-                <Icon className="mt-0.5 h-4 w-4 shrink-0 text-turquoise" />
-                <p className="text-sm leading-relaxed text-muted-foreground">{quality}</p>
+                <div className="flex items-center gap-2">
+                  <Icon className="h-4 w-4 shrink-0 text-turquoise" />
+                  <h3 className="font-mono text-xs tracking-wider text-foreground uppercase">
+                    {group.title}
+                  </h3>
+                </div>
+                <ul className="mt-4 flex flex-wrap gap-2.5">
+                  {group.items.map((quality, qualityIndex) => (
+                    <li
+                      key={`${group.title}-${quality}-${qualityIndex}`}
+                      className="rounded-full border border-border/80 bg-secondary/40 px-3 py-1.5 text-xs leading-relaxed text-muted-foreground transition-colors duration-200 hover:border-primary/50 hover:text-foreground"
+                    >
+                      {quality}
+                    </li>
+                  ))}
+                </ul>
               </article>
             );
           })}
