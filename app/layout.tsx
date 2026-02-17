@@ -27,7 +27,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",
     description:
-      "Portfolio de Denise Evelyn Galloni — una creadora multidisciplinar que trabaja en la intersección entre código, luz y sonido.",
+      "Portfolio de Denise Evelyn Galloni, creadora multidisciplinaria. Desarrollo software, fotografía y música con una mirada técnica y artística.",
     icons: {
       icon: logoIconUrl,
       shortcut: logoIconUrl,
@@ -36,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",
       description:
-        "Portfolio de Denise Evelyn Galloni — una creadora multidisciplinar que trabaja en la intersección entre código, luz y sonido.",
+        "Portfolio de Denise Evelyn Galloni, creadora multidisciplinaria. Desarrollo software, fotografía y música con una mirada técnica y artística.",
       locale: "es_ES",
       type: "website",
     },
@@ -44,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",
       description:
-        "Portfolio de Denise Evelyn Galloni — una creadora multidisciplinar que trabaja en la intersección entre código, luz y sonido.",
+        "Portfolio de Denise Evelyn Galloni, creadora multidisciplinaria. Desarrollo software, fotografía y música con una mirada técnica y artística.",
     },
   };
 }
