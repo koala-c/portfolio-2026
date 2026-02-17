@@ -2,6 +2,7 @@ import "server-only";
 
 export type PortfolioPhoto = {
   src: string;
+  fullSrc?: string;
   alt: string;
   categoryKey: "Landscape" | "Street" | "Architecture" | "Portrait" | "Still Life";
 };
@@ -43,6 +44,17 @@ function inferCategory(resource: CloudinaryResource): PortfolioPhoto["categoryKe
 function publicIdToAlt(publicId: string) {
   const name = publicId.split("/").pop() ?? "Portfolio photo";
   return name.replace(/[-_]+/g, " ").trim();
+}
+
+function withCloudinaryTransformations(url: string, transformations: string[]) {
+  if (!url || transformations.length === 0) return url;
+  const marker = "/upload/";
+  const markerIndex = url.indexOf(marker);
+  if (markerIndex === -1) return url;
+
+  const before = url.slice(0, markerIndex + marker.length);
+  const after = url.slice(markerIndex + marker.length);
+  return `${before}${transformations.join(",")}/${after}`;
 }
 
 function buildBasicAuthHeader(apiKey: string, apiSecret: string) {
@@ -105,7 +117,8 @@ export async function getCloudinaryPhotos(): Promise<PortfolioPhoto[]> {
 
   const resources = await fetchCloudinaryResourcesByFolder(folder);
   return resources.map((resource) => ({
-    src: resource.secure_url,
+    src: withCloudinaryTransformations(resource.secure_url, ["f_auto", "q_auto:good", "w_1000", "c_limit"]),
+    fullSrc: withCloudinaryTransformations(resource.secure_url, ["f_auto", "q_auto", "w_2400", "c_limit"]),
     alt: publicIdToAlt(resource.public_id),
     categoryKey: inferCategory(resource),
   }));

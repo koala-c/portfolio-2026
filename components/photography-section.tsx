@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type SyntheticEvent } from "react";
+import { useEffect, useRef, useState, type SyntheticEvent, type TouchEvent } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
@@ -34,6 +34,7 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [failedSources, setFailedSources] = useState<Record<string, boolean>>({});
+  const touchStartXRef = useRef<number | null>(null);
   const { t, tCategories } = useI18n();
   const categories = tCategories("photo.categories");
   const galleryPhotos = photos.length > 0 ? photos : fallbackPhotos;
@@ -76,6 +77,34 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
   const resolveImageSrc = (src: string) => {
     if (!src || failedSources[src]) return PLACEHOLDER_IMAGE;
     return src;
+  };
+
+  const goToPreviousPhoto = () => {
+    if (lightbox === null) return;
+    setLightbox(lightbox > 0 ? lightbox - 1 : galleryPhotos.length - 1);
+  };
+
+  const goToNextPhoto = () => {
+    if (lightbox === null) return;
+    setLightbox(lightbox < galleryPhotos.length - 1 ? lightbox + 1 : 0);
+  };
+
+  const handleLightboxTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    touchStartXRef.current = event.changedTouches[0]?.clientX ?? null;
+  };
+
+  const handleLightboxTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    if (touchStartXRef.current === null) return;
+    const touchEndX = event.changedTouches[0]?.clientX ?? touchStartXRef.current;
+    const deltaX = touchEndX - touchStartXRef.current;
+    touchStartXRef.current = null;
+
+    if (Math.abs(deltaX) < 40) return;
+    if (deltaX > 0) {
+      goToPreviousPhoto();
+      return;
+    }
+    goToNextPhoto();
   };
 
   useEffect(() => {
@@ -179,22 +208,24 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
 
           <button
             type="button"
-            onClick={() =>
-              setLightbox(lightbox > 0 ? lightbox - 1 : galleryPhotos.length - 1)
-            }
-            className="absolute left-6 font-mono text-sm text-muted-foreground transition-colors hover:text-primary"
+            onClick={goToPreviousPhoto}
+            className="absolute left-6 hidden font-mono text-sm text-muted-foreground transition-colors hover:text-primary md:block"
             aria-label="Previous photo"
           >
             {t("photo.prev")}
           </button>
 
-          <div className="relative mx-6 aspect-[3/2] w-full max-w-5xl">
+          <div
+            className="relative mx-6 aspect-[3/2] w-full max-w-5xl"
+            onTouchStart={handleLightboxTouchStart}
+            onTouchEnd={handleLightboxTouchEnd}
+          >
             <Image
-              src={resolveImageSrc(galleryPhotos[lightbox].src)}
+              src={resolveImageSrc(galleryPhotos[lightbox].fullSrc ?? galleryPhotos[lightbox].src)}
               alt={galleryPhotos[lightbox].alt}
               fill
               draggable={false}
-              onError={() => handleImageError(galleryPhotos[lightbox].src)}
+              onError={() => handleImageError(galleryPhotos[lightbox].fullSrc ?? galleryPhotos[lightbox].src)}
               onContextMenu={preventImageActions}
               onDragStart={preventImageActions}
               className="protect-portfolio-image object-contain"
@@ -209,10 +240,8 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
 
           <button
             type="button"
-            onClick={() =>
-              setLightbox(lightbox < galleryPhotos.length - 1 ? lightbox + 1 : 0)
-            }
-            className="absolute right-6 font-mono text-sm text-muted-foreground transition-colors hover:text-primary"
+            onClick={goToNextPhoto}
+            className="absolute right-6 hidden font-mono text-sm text-muted-foreground transition-colors hover:text-primary md:block"
             aria-label="Next photo"
           >
             {t("photo.next")}
