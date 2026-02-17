@@ -32,11 +32,11 @@ export function HeroSection({ heroImageUrl = "/images/hero-portrait.jpg" }: Hero
           onDragStart={preventImageActions}
           aria-hidden="true"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />
+        <div className="hero-legibility-overlay absolute inset-0 bg-gradient-to-b from-background/50 via-background/24 to-background/96" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-32 lg:px-8">
-        <div className="max-w-3xl">
+        <div className="hero-legibility-copy max-w-3xl">
           <p className="animate-fade-in-up font-mono text-xs tracking-widest text-primary opacity-0 uppercase">
             {t("hero.tagline")}
           </p>

@@ -204,7 +204,7 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
 
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
             <p className="font-mono text-xs text-muted-foreground">
-              {categories[galleryPhotos[lightbox].categoryKey] ?? galleryPhotos[lightbox].categoryKey} - {lightbox + 1} / {galleryPhotos.length}
+              {lightbox + 1} / {galleryPhotos.length}
             </p>
           </div>
         </div>

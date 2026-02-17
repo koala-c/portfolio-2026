@@ -225,3 +225,29 @@ html.a11y-focus-highlight *:focus-visible {
   -webkit-touch-callout: none;
   pointer-events: none;
 }
+
+.hero-legibility-overlay {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--background) / 0.52) 0%,
+    hsl(var(--background) / 0.24) 48%,
+    hsl(var(--background) / 0.96) 100%
+  );
+}
+
+.hero-legibility-copy {
+  text-shadow: 0 1px 2px hsl(var(--background) / 0.3);
+}
+
+.light .hero-legibility-overlay {
+  background: linear-gradient(
+    180deg,
+    hsl(var(--background) / 0.46) 0%,
+    hsl(var(--background) / 0.18) 48%,
+    hsl(var(--background) / 0.92) 100%
+  );
+}
+
+.light .hero-legibility-copy {
+  text-shadow: 0 1px 2px hsl(var(--background) / 0.5);
+}

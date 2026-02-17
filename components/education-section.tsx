@@ -19,7 +19,7 @@ export function EducationSection() {
           {t("education.heading")}
         </h2>
 
-        <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid gap-6 md:grid-cols-2">
           {studies.map((study, index) => {
             const Icon = educationIcons[index] ?? GraduationCap;
             const isComplementary = index === 3;
