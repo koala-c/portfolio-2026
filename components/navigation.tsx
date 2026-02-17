@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useI18n, localeLabels, type Locale } from "@/lib/i18n";
@@ -8,6 +8,7 @@ import { useI18n, localeLabels, type Locale } from "@/lib/i18n";
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const headerRef = useRef<HTMLElement | null>(null);
   const { theme, setTheme } = useTheme();
   const { locale, setLocale, t } = useI18n();
   const [mounted, setMounted] = useState(false);
@@ -22,6 +23,37 @@ export function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!mobileOpen) return;
+
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (!headerRef.current) return;
+      const target = event.target as Node;
+      if (!headerRef.current.contains(target)) {
+        setMobileOpen(false);
+      }
+    };
+
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMobileOpen(false);
+      }
+    };
+
+    const handleScrollClose = () => {
+      setMobileOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    document.addEventListener("keydown", handleEscape);
+    window.addEventListener("scroll", handleScrollClose, { passive: true });
+    return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+      document.removeEventListener("keydown", handleEscape);
+      window.removeEventListener("scroll", handleScrollClose);
+    };
+  }, [mobileOpen]);
+
   const navLinks = [
     { label: t("nav.about"), href: "#about" },
     { label: t("nav.education"), href: "#education" },
@@ -35,6 +67,7 @@ export function Navigation() {
 
   return (
     <header
+      ref={headerRef}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
           ? "bg-background/90 backdrop-blur-md border-b border-border"
