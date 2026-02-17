@@ -80,13 +80,17 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
   };
 
   const goToPreviousPhoto = () => {
-    if (lightbox === null) return;
-    setLightbox(lightbox > 0 ? lightbox - 1 : galleryPhotos.length - 1);
+    setLightbox((current) => {
+      if (current === null) return current;
+      return current > 0 ? current - 1 : galleryPhotos.length - 1;
+    });
   };
 
   const goToNextPhoto = () => {
-    if (lightbox === null) return;
-    setLightbox(lightbox < galleryPhotos.length - 1 ? lightbox + 1 : 0);
+    setLightbox((current) => {
+      if (current === null) return current;
+      return current < galleryPhotos.length - 1 ? current + 1 : 0;
+    });
   };
 
   const handleLightboxTouchStart = (event: TouchEvent<HTMLDivElement>) => {
@@ -112,6 +116,64 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
     window.addEventListener("scroll", handleWindowScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleWindowScroll);
   }, []);
+
+  useEffect(() => {
+    if (lightbox === null) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        goToPreviousPhoto();
+        return;
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        goToNextPhoto();
+        return;
+      }
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setLightbox(null);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [lightbox, galleryPhotos.length]);
+
+  useEffect(() => {
+    if (lightbox === null || galleryPhotos.length === 0 || typeof window === "undefined") return;
+
+    const nextIndex = lightbox < galleryPhotos.length - 1 ? lightbox + 1 : 0;
+    const prevIndex = lightbox > 0 ? lightbox - 1 : galleryPhotos.length - 1;
+
+    const preload = (src?: string) => {
+      if (!src) return;
+      const img = new window.Image();
+      img.src = resolveImageSrc(src);
+    };
+
+    preload(galleryPhotos[nextIndex]?.fullSrc ?? galleryPhotos[nextIndex]?.src);
+    preload(galleryPhotos[prevIndex]?.fullSrc ?? galleryPhotos[prevIndex]?.src);
+  }, [lightbox, galleryPhotos, failedSources]);
+
+  useEffect(() => {
+    if (lightbox === null || galleryPhotos.length === 0 || typeof window === "undefined") return;
+
+    const timer = window.setTimeout(() => {
+      for (let index = 0; index < galleryPhotos.length; index += 1) {
+        if (index === lightbox) continue;
+        const src = galleryPhotos[index]?.fullSrc ?? galleryPhotos[index]?.src;
+        if (!src) continue;
+        const img = new window.Image();
+        img.src = resolveImageSrc(src);
+      }
+    }, 120);
+
+    return () => window.clearTimeout(timer);
+  }, [lightbox, galleryPhotos, failedSources]);
 
   return (
     <>
@@ -200,7 +262,7 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
           <button
             type="button"
             onClick={() => setLightbox(null)}
-            className="absolute top-6 right-6 z-10 text-foreground transition-colors hover:text-primary"
+            className="absolute top-6 right-6 z-30 flex h-10 w-10 items-center justify-center border border-border bg-background/80 text-foreground backdrop-blur-sm transition-colors hover:bg-secondary"
             aria-label="Close lightbox"
           >
             <X className="h-6 w-6" />
@@ -209,10 +271,10 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
           <button
             type="button"
             onClick={goToPreviousPhoto}
-            className="absolute left-6 hidden font-mono text-sm text-muted-foreground transition-colors hover:text-primary md:block"
+            className="absolute left-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-border bg-background/80 text-foreground backdrop-blur-sm transition-colors hover:bg-secondary md:left-6"
             aria-label="Previous photo"
           >
-            {t("photo.prev")}
+            <ArrowLeft className="h-5 w-5" />
           </button>
 
           <div
@@ -224,6 +286,9 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
               src={resolveImageSrc(galleryPhotos[lightbox].fullSrc ?? galleryPhotos[lightbox].src)}
               alt={galleryPhotos[lightbox].alt}
               fill
+              priority
+              loading="eager"
+              sizes="100vw"
               draggable={false}
               onError={() => handleImageError(galleryPhotos[lightbox].fullSrc ?? galleryPhotos[lightbox].src)}
               onContextMenu={preventImageActions}
@@ -231,9 +296,7 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
               className="protect-portfolio-image object-contain"
             />
             <span
-              className="pointer-events-auto absolute inset-0 z-10"
-              onContextMenu={preventImageActions}
-              onDragStart={preventImageActions}
+              className="pointer-events-none absolute inset-0 z-10"
               aria-hidden="true"
             />
           </div>
@@ -241,10 +304,10 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
           <button
             type="button"
             onClick={goToNextPhoto}
-            className="absolute right-6 hidden font-mono text-sm text-muted-foreground transition-colors hover:text-primary md:block"
+            className="absolute right-3 top-1/2 z-20 flex h-10 w-10 -translate-y-1/2 items-center justify-center border border-border bg-background/80 text-foreground backdrop-blur-sm transition-colors hover:bg-secondary md:right-6"
             aria-label="Next photo"
           >
-            {t("photo.next")}
+            <ArrowRight className="h-5 w-5" />
           </button>
 
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">

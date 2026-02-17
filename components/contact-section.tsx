@@ -1,13 +1,11 @@
 "use client";
 
-import { Github, Instagram, Mail, Music } from "lucide-react";
+import { Github, Music } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 const socialLinks = [
   { label: "GitHub", href: "https://github.com/koala-c/", icon: Github },
-  { label: "Instagram", href: "#", icon: Instagram },
-  { label: "Spotify", href: "#", icon: Music },
-  { label: "Email", href: "mailto:evelyngalloni@gmail.com", icon: Mail },
+  { label: "Spotify", icon: Music, disabled: true },
 ];
 
 export function ContactSection() {
@@ -30,16 +28,28 @@ export function ContactSection() {
             </p>
 
             <div className="mt-10 flex gap-4">
-              {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="flex h-12 w-12 items-center justify-center border border-border text-muted-foreground transition-all hover:border-turquoise hover:text-turquoise"
-                  aria-label={link.label}
-                >
-                  <link.icon className="h-5 w-5" />
-                </a>
-              ))}
+              {socialLinks.map((link) =>
+                link.disabled ? (
+                  <span
+                    key={link.label}
+                    className="flex h-12 w-12 cursor-not-allowed items-center justify-center border border-border/60 text-muted-foreground/40"
+                    aria-label={`${link.label} (disabled)`}
+                    aria-disabled="true"
+                    title={`${link.label} - coming soon`}
+                  >
+                    <link.icon className="h-5 w-5" />
+                  </span>
+                ) : (
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="flex h-12 w-12 items-center justify-center border border-border text-muted-foreground transition-all hover:border-turquoise hover:text-turquoise"
+                    aria-label={link.label}
+                  >
+                    <link.icon className="h-5 w-5" />
+                  </a>
+                )
+              )}
             </div>
           </div>
 

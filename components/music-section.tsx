@@ -1,20 +1,8 @@
 "use client";
 
-import { Play, Pause } from "lucide-react";
-import { useState } from "react";
 import { useI18n } from "@/lib/i18n";
 
-const tracks = [
-  { title: "Bach - Partita No. 2", style: "Classical", duration: "Baroque" },
-  { title: "Vivaldi - Summer", style: "Four Seasons", duration: "Baroque" },
-  { title: "Czardas - Monti", style: "Hungarian", duration: "Romantic" },
-  { title: "Piazzolla - Libertango", style: "Tango", duration: "Contemporary" },
-  { title: "Meditation - Thais", style: "Massenet", duration: "Romantic" },
-  { title: "Improvisation", style: "Original", duration: "Experimental" },
-];
-
 export function MusicSection() {
-  const [activeTrack, setActiveTrack] = useState<number | null>(null);
   const { t } = useI18n();
 
   return (
@@ -34,20 +22,13 @@ export function MusicSection() {
             </p>
 
             <div className="mt-10 space-y-6">
-              <div className="border border-border p-6">
+              <div className="border border-turquoise p-6">
                 <p className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
                   {t("music.latestRelease")}
                 </p>
-                <h3 className="mt-3 text-xl font-bold text-foreground">Structures</h3>
                 <p className="mt-2 text-sm text-muted-foreground">
                   {t("music.albumDescription")}
                 </p>
-                <a
-                  href="#"
-                  className="mt-4 inline-flex items-center gap-2 font-mono text-xs tracking-wider text-turquoise transition-colors hover:text-foreground uppercase"
-                >
-                  {t("music.listenSpotify")}
-                </a>
               </div>
             </div>
           </div>
@@ -62,41 +43,21 @@ export function MusicSection() {
                 {t("music.durationHeader")}
               </span>
             </div>
-            {tracks.map((track, index) => (
-              <button
-                key={track.title}
-                type="button"
-                onClick={() => setActiveTrack(activeTrack === index ? null : index)}
-                className={`group flex w-full items-center justify-between border-b border-border py-5 text-left transition-all hover:bg-secondary/30 hover:px-4 ${
-                  activeTrack === index ? "bg-secondary/30 px-4" : ""
-                }`}
-              >
-                <div className="flex items-center gap-4">
-                  <span className="flex h-8 w-8 items-center justify-center">
-                    {activeTrack === index ? (
-                      <Pause className="h-4 w-4 text-primary" />
-                    ) : (
-                      <Play className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-primary" />
-                    )}
-                  </span>
-                  <div>
-                    <p
-                      className={`text-sm font-medium ${
-                        activeTrack === index ? "text-primary" : "text-foreground"
-                      }`}
-                    >
-                      {track.title}
-                    </p>
-                    <p className="font-mono text-[10px] text-muted-foreground">
-                      {track.style}
-                    </p>
-                  </div>
-                </div>
-                <span className="font-mono text-xs text-muted-foreground">
-                  {track.duration}
-                </span>
-              </button>
-            ))}
+            <div className="mt-4">
+              <p className="font-mono text-[11px] tracking-wider text-turquoise uppercase">
+                {t("music.comingSoon")}
+              </p>
+              <span className="inline-block" title={t("music.comingSoon")}>
+                <button
+                  type="button"
+                  disabled
+                  className="mt-2 cursor-not-allowed font-mono text-[10px] tracking-widest text-muted-foreground/50 uppercase"
+                  aria-disabled="true"
+                >
+                  {t("music.showPieces")}
+                </button>
+              </span>
+            </div>
           </div>
         </div>
       </div>

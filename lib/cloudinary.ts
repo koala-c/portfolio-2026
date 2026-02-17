@@ -15,6 +15,7 @@ type CloudinaryResource = {
 
 type CloudinaryResponse = {
   resources?: CloudinaryResource[];
+  next_cursor?: string;
 };
 
 type CloudinaryNamedImages = {
@@ -80,9 +81,6 @@ async function fetchCloudinaryResourcesByFolder(folder: string): Promise<Cloudin
     return [];
   }
 
-  const endpoint = `https://api.cloudinary.com/v1_1/${cloudName}/resources/by_asset_folder?asset_folder=${encodeURIComponent(
-    folder
-  )}&max_results=200`;
   let authorizationHeader = "";
   try {
     authorizationHeader = buildBasicAuthHeader(apiKey, apiSecret);
@@ -91,21 +89,34 @@ async function fetchCloudinaryResourcesByFolder(folder: string): Promise<Cloudin
     return [];
   }
 
+  const allResources: CloudinaryResource[] = [];
+  let nextCursor: string | undefined;
+
   try {
-    const response = await fetch(endpoint, {
-      headers: {
-        Authorization: authorizationHeader,
-      },
-      cache: "force-cache",
-    });
+    do {
+      const cursorQuery = nextCursor ? `&next_cursor=${encodeURIComponent(nextCursor)}` : "";
+      const endpoint = `https://api.cloudinary.com/v1_1/${cloudName}/resources/by_asset_folder?asset_folder=${encodeURIComponent(
+        folder
+      )}&max_results=200${cursorQuery}`;
 
-    if (!response.ok) {
-      console.error(`[cloudinary] request failed for folder "${folder}" with status ${response.status}`);
-      return [];
-    }
+      const response = await fetch(endpoint, {
+        headers: {
+          Authorization: authorizationHeader,
+        },
+        cache: "force-cache",
+      });
 
-    const data = (await response.json()) as CloudinaryResponse;
-    return data.resources ?? [];
+      if (!response.ok) {
+        console.error(`[cloudinary] request failed for folder "${folder}" with status ${response.status}`);
+        return allResources;
+      }
+
+      const data = (await response.json()) as CloudinaryResponse;
+      allResources.push(...(data.resources ?? []));
+      nextCursor = data.next_cursor;
+    } while (nextCursor);
+
+    return allResources;
   } catch (error) {
     console.error(`[cloudinary] fetch failed for folder "${folder}":`, error);
     return [];
@@ -118,7 +129,7 @@ export async function getCloudinaryPhotos(): Promise<PortfolioPhoto[]> {
   const resources = await fetchCloudinaryResourcesByFolder(folder);
   return resources.map((resource) => ({
     src: withCloudinaryTransformations(resource.secure_url, ["f_auto", "q_auto:good", "w_1000", "c_limit"]),
-    fullSrc: withCloudinaryTransformations(resource.secure_url, ["f_auto", "q_auto", "w_2400", "c_limit"]),
+    fullSrc: withCloudinaryTransformations(resource.secure_url, ["f_auto", "q_auto:eco", "w_1400", "c_limit"]),
     alt: publicIdToAlt(resource.public_id),
     categoryKey: inferCategory(resource),
   }));
