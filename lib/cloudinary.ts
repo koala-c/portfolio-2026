@@ -79,8 +79,7 @@ async function fetchCloudinaryResourcesByFolder(folder: string): Promise<Cloudin
 }
 
 export async function getCloudinaryPhotos(): Promise<PortfolioPhoto[]> {
-  const folder = process.env.CLOUDINARY_FOLDER;
-  if (!folder) return [];
+  const folder = process.env.CLOUDINARY_FOLDER || "portfolio-2026/photography";
 
   const resources = await fetchCloudinaryResourcesByFolder(folder);
   return resources.map((resource) => ({
