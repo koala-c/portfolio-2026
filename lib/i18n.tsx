@@ -151,7 +151,7 @@ const translations = {
           "CFGS, Web Application Development with a Virtual Reality and Web Video Games curriculum adaptation (EQF 5; UK approx.: Level 5 HTQ/HND/Foundation Degree; US approx.: Associate degree in a technical field) / 2023-2024\nCFGS, Multiplatform Application Development with a Professional Profile in Video Games and Digital Leisure (EQF 5; UK approx.: Level 5 HTQ/HND/Foundation Degree; US approx.: Associate degree in a technical field) / 2021-2023\nCFGM, Microcomputer Systems and Networks (EQF 4; UK approx.: Level 4 HNC/Level 4 Diploma; US approx.: postsecondary technical diploma or early Associate-level coursework) / 2015-2017",
       },
       {
-        title: "Bible Institute (Word of Life Argentina · online mode)",
+        title: "Bible Institute (Word of Life Argentina · Online mode)",
         description:
           "Theological Course (2nd and 3rd year) / 2025-2026\nBasic Course / 2020-2021",
       },
@@ -161,7 +161,7 @@ const translations = {
           "School lunch monitor / 2025-2026\nFood handling / 2025\nChild and youth leisure activities monitor / 2024",
       },
       {
-        title: "Complementary Training (Non-formal courses)",
+        title: "Complementary Training",
         description:
           "Category B driving license / 2021",
       },
@@ -272,7 +272,7 @@ const translations = {
           "CFGS, Desarrollo de Aplicaciones Web con adaptación curricular de Realidad Virtual y Videojuegos Web / 2023-2024\nCFGS, Desarrollo de Aplicaciones Multiplataforma con Perfil Profesional en Videojuegos y Ocio Digital / 2021-2023\nCFGM, Sistemas Microinformáticos y Redes / 2015-2017",
       },
       {
-        title: "Instituto Bíblico (Palabra de Vida Argentina · modalidad online)",
+        title: "Instituto Bíblico (Palabra de Vida Argentina · Modalidad online)",
         description:
           "Curso Teológico (2º y 3º año) / 2025-2026\nCurso Básico / 2020-2021",
       },
@@ -282,7 +282,7 @@ const translations = {
           "Monitora de comedor / 2025-2026\nManipulación de alimentos / 2025\nMonitora de actividades de ocio infantil y juvenil / 2024",
       },
       {
-        title: "Formación complementaria (Cursos no reglados)",
+        title: "Formación complementaria",
         description:
           "Carnet de conducir B / 2021",
       },
@@ -393,7 +393,7 @@ const translations = {
           "CFGS, Desenvolupament d'Aplicacions Web amb adaptació curricular de Realitat Virtual i Videojocs Web / 2023-2024\nCFGS, Desenvolupament d'Aplicacions Multiplataforma amb Perfil Professional en Videojocs i Oci Digital / 2021-2023\nCFGM, Sistemes Microinformàtics i Xarxes / 2015-2017",
       },
       {
-        title: "Institut Bíblic (Paraula de Vida Argentina · modalitat en línia)",
+        title: "Institut Bíblic (Paraula de Vida Argentina · Modalitat en línia)",
         description:
           "Curs Teològic (2n i 3r any) / 2025-2026\nCurs Bàsic / 2020-2021",
       },
@@ -403,7 +403,7 @@ const translations = {
           "Monitora de menjador / 2025-2026\nManipulació d'aliments / 2025\nMonitora d'activitats de lleure infantil i juvenil / 2024",
       },
       {
-        title: "Formació complementària (Cursos no reglats)",
+        title: "Formació complementària",
         description:
           "Carnet de conduir B / 2021",
       },
@@ -514,7 +514,7 @@ const translations = {
           "CFGS, Sviluppo di Applicazioni Web con adattamento curricolare in Realtà Virtuale e Videogiochi Web (EQF 5; equivalenza Italia: percorso ITS Academy di area ICT, livello terziario professionalizzante) / 2023-2024\nCFGS, Sviluppo di Applicazioni Multipiattaforma con Profilo Professionale in Videogiochi e Svago Digitale (EQF 5; equivalenza Italia: percorso ITS Academy di area ICT, livello terziario professionalizzante) / 2021-2023\nCFGM, Sistemi Microinformatici e Reti (EQF 4; equivalenza Italia: diploma professionale IeFP, quarto anno) / 2015-2017",
       },
       {
-        title: "Istituto Biblico (Parola di Vita Argentina · modalità online)",
+        title: "Istituto Biblico (Parola di Vita Argentina · Modalità online)",
         description:
           "Corso Teologico (2º e 3º anno) / 2025-2026\nCorso Base / 2020-2021",
       },
@@ -524,7 +524,7 @@ const translations = {
           "Monitrice di mensa / 2025-2026\nManipolazione degli alimenti / 2025\nMonitrice di attività ricreative per bambini e giovani / 2024",
       },
       {
-        title: "Formazione complementare (Corsi non regolati)",
+        title: "Formazione complementare",
         description:
           "Patente di guida B / 2021",
       },

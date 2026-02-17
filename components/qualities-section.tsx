@@ -40,7 +40,7 @@ export function QualitiesSection() {
             return (
               <article
                 key={`qualities-group-${index}`}
-                className="relative overflow-hidden border border-border/80 bg-card/40 px-5 py-5 shadow-[0_8px_30px_-20px_rgba(0,0,0,0.8)] backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:bg-card/60 md:px-6 md:py-6"
+                className="relative overflow-hidden border border-border/80 bg-card/40 px-5 py-5 backdrop-blur-sm md:px-6 md:py-6"
               >
                 <div className="flex items-center gap-2">
                   <Icon className="h-4 w-4 shrink-0 text-turquoise" />

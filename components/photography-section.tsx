@@ -111,16 +111,11 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
                         alt={photo.alt}
                         fill
                         draggable={false}
-                        className="protect-portfolio-image object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="protect-portfolio-image object-cover grayscale brightness-75 transition-[transform,filter] duration-700 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100"
                       />
                       <span className="pointer-events-auto absolute inset-0 z-10" aria-hidden="true" />
                       <div className="absolute inset-x-0 top-0 h-0.5 scale-x-0 bg-turquoise transition-transform duration-500 group-hover:scale-x-100" />
-                      <div className="absolute inset-0 bg-background/0 transition-all duration-500 group-hover:bg-background/40" />
-                      <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-500 group-hover:translate-y-0">
-                        <p className="font-mono text-xs tracking-wider text-foreground uppercase">
-                          {categories[photo.categoryKey] ?? photo.categoryKey}
-                        </p>
-                      </div>
+                      <div className="absolute inset-0 bg-turquoise/50 transition-all duration-500 group-hover:bg-transparent" />
                     </button>
                   </CarouselItem>
                 ))}
