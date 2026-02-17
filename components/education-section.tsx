@@ -71,21 +71,23 @@ export function EducationSection() {
                                 <Car className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
                               ) : null}
                               <span>{mainText}</span>
-                              {equivalence ? (
-                                <span
-                                  className="group relative mt-0.5 inline-flex cursor-help items-center text-muted-foreground"
-                                  title={equivalence}
-                                >
-                                  <CircleHelp className="h-3.5 w-3.5" />
-                                  <span className="pointer-events-none absolute top-full right-0 z-20 mt-2 hidden w-72 max-w-[calc(100vw-2rem)] border border-border bg-background p-2 text-xs leading-relaxed text-muted-foreground shadow-lg group-hover:block sm:left-0 sm:right-auto">
-                                    {equivalence}
-                                  </span>
-                                </span>
-                              ) : null}
                             </span>
                             {year ? (
-                              <span className="shrink-0 font-mono text-[11px] tracking-wide text-muted-foreground">
-                                {year}
+                              <span className="shrink-0 inline-flex items-center gap-2">
+                                {equivalence ? (
+                                  <span
+                                    className="group relative inline-flex cursor-help items-center text-muted-foreground"
+                                    title={equivalence}
+                                  >
+                                    <CircleHelp className="h-3.5 w-3.5" />
+                                    <span className="pointer-events-none absolute top-full right-0 z-20 mt-2 hidden w-72 max-w-[calc(100vw-2rem)] border border-border bg-background p-2 text-xs leading-relaxed text-muted-foreground shadow-lg group-hover:block sm:left-0 sm:right-auto">
+                                      {equivalence}
+                                    </span>
+                                  </span>
+                                ) : null}
+                                <span className="font-mono text-[11px] tracking-wide text-muted-foreground">
+                                  {year}
+                                </span>
                               </span>
                             ) : null}
                           </div>

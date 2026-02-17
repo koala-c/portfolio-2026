@@ -37,9 +37,11 @@ function mapLanguageTagToLocale(languageTag: string): Locale | null {
 }
 
 function detectLocaleFromDevice(): Locale {
-  const browserLanguages = [...(navigator.languages ?? []), navigator.language].filter(Boolean);
+  const primaryLanguage = navigator.language;
+  const browserLanguages = [primaryLanguage, ...(navigator.languages ?? [])].filter(Boolean);
+  const uniqueLanguages = Array.from(new Set(browserLanguages));
 
-  for (const lang of browserLanguages) {
+  for (const lang of uniqueLanguages) {
     const mappedLocale = mapLanguageTagToLocale(lang);
     if (mappedLocale) return mappedLocale;
   }
