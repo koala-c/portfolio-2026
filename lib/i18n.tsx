@@ -13,6 +13,7 @@ export const localeLabels: Record<Locale, string> = {
 
 const SUPPORTED_LOCALES: Locale[] = ["en", "es", "cat", "it"];
 const LOCALE_STORAGE_KEY = "portfolio-locale";
+const LOCALE_MANUAL_STORAGE_KEY = "portfolio-locale-manual";
 
 function isLocale(value: string): value is Locale {
   return SUPPORTED_LOCALES.includes(value as Locale);
@@ -545,32 +546,38 @@ interface I18nContextType {
 const I18nContext = createContext<I18nContextType | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("en");
+  const [locale, setLocaleState] = useState<Locale>("en");
 
   useEffect(() => {
     try {
+      const hasManualPreference =
+        window.localStorage.getItem(LOCALE_MANUAL_STORAGE_KEY) === "1";
       const storedLocale = window.localStorage.getItem(LOCALE_STORAGE_KEY);
-      if (storedLocale && isLocale(storedLocale)) {
-        setLocale(storedLocale);
+      if (hasManualPreference && storedLocale && isLocale(storedLocale)) {
+        setLocaleState(storedLocale);
         return;
       }
     } catch {
       // no-op
     }
 
-    setLocale(detectLocaleFromDevice());
+    setLocaleState(detectLocaleFromDevice());
   }, []);
 
   useEffect(() => {
     const htmlLang = locale === "cat" ? "ca" : locale;
     document.documentElement.lang = htmlLang;
+  }, [locale]);
 
+  const setLocale = useCallback((nextLocale: Locale) => {
+    setLocaleState(nextLocale);
     try {
-      window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+      window.localStorage.setItem(LOCALE_STORAGE_KEY, nextLocale);
+      window.localStorage.setItem(LOCALE_MANUAL_STORAGE_KEY, "1");
     } catch {
       // no-op
     }
-  }, [locale]);
+  }, []);
 
   const t = useCallback(
     (key: TranslationKeys): string => {
