@@ -1,11 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState, type SyntheticEvent } from "react";
 import Image from "next/image";
-import { X } from "lucide-react";
+import { ArrowLeft, ArrowRight, X } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
+import {
+  type CarouselApi,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import { Button } from "@/components/ui/button";
+import type { PortfolioPhoto } from "@/lib/cloudinary";
 
-const photos = [
+const fallbackPhotos: PortfolioPhoto[] = [
   { src: "/placeholder.svg", alt: "Golden hour mountain landscape", categoryKey: "Landscape" },
   { src: "/placeholder.svg", alt: "Urban night street scene", categoryKey: "Street" },
   { src: "/placeholder.svg", alt: "Abstract architecture detail", categoryKey: "Architecture" },
@@ -14,10 +22,53 @@ const photos = [
   { src: "/placeholder.svg", alt: "Dramatic ocean seascape", categoryKey: "Landscape" },
 ];
 
-export function PhotographySection() {
+type PhotographySectionProps = {
+  photos?: PortfolioPhoto[];
+};
+
+export function PhotographySection({ photos = fallbackPhotos }: PhotographySectionProps) {
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const [carouselApi, setCarouselApi] = useState<CarouselApi>();
+  const [isAutoPlay, setIsAutoPlay] = useState(true);
   const { t, tCategories } = useI18n();
   const categories = tCategories("photo.categories");
+  const galleryPhotos = photos.length > 0 ? photos : fallbackPhotos;
+
+  useEffect(() => {
+    if (!carouselApi || !isAutoPlay) return;
+
+    const timer = window.setInterval(() => {
+      carouselApi.scrollNext();
+    }, 4500);
+
+    return () => {
+      window.clearInterval(timer);
+    };
+  }, [carouselApi, isAutoPlay]);
+
+  const handlePrevManual = () => {
+    setIsAutoPlay(false);
+    carouselApi?.scrollPrev();
+  };
+
+  const handleNextManual = () => {
+    setIsAutoPlay(false);
+    carouselApi?.scrollNext();
+  };
+
+  const resumeAutoPlay = () => {
+    setIsAutoPlay(true);
+  };
+
+  const preventImageActions = (event: SyntheticEvent) => {
+    event.preventDefault();
+  };
+
+  useEffect(() => {
+    const handleWindowScroll = () => setIsAutoPlay(true);
+    window.addEventListener("scroll", handleWindowScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleWindowScroll);
+  }, []);
 
   return (
     <>
@@ -33,29 +84,68 @@ export function PhotographySection() {
             {t("photo.description")}
           </p>
 
-          <div className="mt-16 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {photos.map((photo, index) => (
-              <button
-                key={`${photo.src}-${index}`}
+          <div className="mt-16 px-10 md:px-12">
+            <Carousel
+              setApi={setCarouselApi}
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+              onWheelCapture={resumeAutoPlay}
+              onTouchMoveCapture={resumeAutoPlay}
+              onPointerDownCapture={resumeAutoPlay}
+            >
+              <CarouselContent>
+                {galleryPhotos.map((photo, index) => (
+                  <CarouselItem key={`${photo.src}-${index}`} className="basis-full sm:basis-1/2 lg:basis-1/3">
+                    <button
+                      type="button"
+                      onClick={() => setLightbox(index)}
+                      onContextMenu={preventImageActions}
+                      onDragStart={preventImageActions}
+                      className="group relative aspect-[4/3] w-full overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                    >
+                      <Image
+                        src={photo.src || "/placeholder.svg"}
+                        alt={photo.alt}
+                        fill
+                        draggable={false}
+                        className="protect-portfolio-image object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <span className="pointer-events-auto absolute inset-0 z-10" aria-hidden="true" />
+                      <div className="absolute inset-x-0 top-0 h-0.5 scale-x-0 bg-turquoise transition-transform duration-500 group-hover:scale-x-100" />
+                      <div className="absolute inset-0 bg-background/0 transition-all duration-500 group-hover:bg-background/40" />
+                      <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-500 group-hover:translate-y-0">
+                        <p className="font-mono text-xs tracking-wider text-foreground uppercase">
+                          {categories[photo.categoryKey] ?? photo.categoryKey}
+                        </p>
+                      </div>
+                    </button>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <Button
                 type="button"
-                onClick={() => setLightbox(index)}
-                className="group relative aspect-[4/3] overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                variant="outline"
+                size="icon"
+                onClick={handlePrevManual}
+                className="-left-9 absolute top-1/2 h-8 w-8 -translate-y-1/2 rounded-none border-border bg-background text-foreground hover:bg-secondary md:-left-10"
+                aria-label="Previous slide"
               >
-                <Image
-                  src={photo.src || "/placeholder.svg"}
-                  alt={photo.alt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                <div className="absolute inset-x-0 top-0 h-0.5 scale-x-0 bg-turquoise transition-transform duration-500 group-hover:scale-x-100" />
-                <div className="absolute inset-0 bg-background/0 transition-all duration-500 group-hover:bg-background/40" />
-                <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-500 group-hover:translate-y-0">
-                  <p className="font-mono text-xs tracking-wider text-foreground uppercase">
-                    {categories[photo.categoryKey] ?? photo.categoryKey}
-                  </p>
-                </div>
-              </button>
-            ))}
+                <ArrowLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                size="icon"
+                onClick={handleNextManual}
+                className="-right-9 absolute top-1/2 h-8 w-8 -translate-y-1/2 rounded-none border-border bg-background text-foreground hover:bg-secondary md:-right-10"
+                aria-label="Next slide"
+              >
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Carousel>
           </div>
         </div>
       </section>
@@ -80,7 +170,7 @@ export function PhotographySection() {
           <button
             type="button"
             onClick={() =>
-              setLightbox(lightbox > 0 ? lightbox - 1 : photos.length - 1)
+              setLightbox(lightbox > 0 ? lightbox - 1 : galleryPhotos.length - 1)
             }
             className="absolute left-6 font-mono text-sm text-muted-foreground transition-colors hover:text-primary"
             aria-label="Previous photo"
@@ -90,17 +180,26 @@ export function PhotographySection() {
 
           <div className="relative mx-6 aspect-[3/2] w-full max-w-5xl">
             <Image
-              src={photos[lightbox].src || "/placeholder.svg"}
-              alt={photos[lightbox].alt}
+              src={galleryPhotos[lightbox].src || "/placeholder.svg"}
+              alt={galleryPhotos[lightbox].alt}
               fill
-              className="object-contain"
+              draggable={false}
+              onContextMenu={preventImageActions}
+              onDragStart={preventImageActions}
+              className="protect-portfolio-image object-contain"
+            />
+            <span
+              className="pointer-events-auto absolute inset-0 z-10"
+              onContextMenu={preventImageActions}
+              onDragStart={preventImageActions}
+              aria-hidden="true"
             />
           </div>
 
           <button
             type="button"
             onClick={() =>
-              setLightbox(lightbox < photos.length - 1 ? lightbox + 1 : 0)
+              setLightbox(lightbox < galleryPhotos.length - 1 ? lightbox + 1 : 0)
             }
             className="absolute right-6 font-mono text-sm text-muted-foreground transition-colors hover:text-primary"
             aria-label="Next photo"
@@ -110,7 +209,7 @@ export function PhotographySection() {
 
           <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-center">
             <p className="font-mono text-xs text-muted-foreground">
-              {categories[photos[lightbox].categoryKey] ?? photos[lightbox].categoryKey} - {lightbox + 1} / {photos.length}
+              {categories[galleryPhotos[lightbox].categoryKey] ?? galleryPhotos[lightbox].categoryKey} - {lightbox + 1} / {galleryPhotos.length}
             </p>
           </div>
         </div>

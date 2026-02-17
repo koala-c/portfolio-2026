@@ -1,11 +1,16 @@
 "use client";
 
+import { type SyntheticEvent } from "react";
 import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
 
-export function AboutSection() {
+type AboutSectionProps = {
+  portraitUrl?: string;
+};
+
+export function AboutSection({ portraitUrl = "/images/hero-portrait.jpg" }: AboutSectionProps) {
   const { t } = useI18n();
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const preventImageActions = (event: SyntheticEvent) => event.preventDefault();
 
   return (
     <section id="about" className="py-32">
@@ -14,10 +19,19 @@ export function AboutSection() {
           {/* Image */}
           <div className="relative aspect-[4/5] overflow-hidden">
             <Image
-              src={`${basePath}/images/hero-portrait.jpg`}
+              src={portraitUrl}
               alt={t("about.portrait")}
               fill
-              className="object-cover object-[20%_18%]"
+              draggable={false}
+              onContextMenu={preventImageActions}
+              onDragStart={preventImageActions}
+              className="protect-portfolio-image object-cover object-[20%_18%]"
+            />
+            <span
+              className="pointer-events-auto absolute inset-0 z-[1]"
+              onContextMenu={preventImageActions}
+              onDragStart={preventImageActions}
+              aria-hidden="true"
             />
             <div className="absolute inset-0 border border-border" />
           </div>

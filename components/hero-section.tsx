@@ -1,22 +1,36 @@
 "use client";
 
+import { type SyntheticEvent } from "react";
 import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
 
-export function HeroSection() {
+type HeroSectionProps = {
+  heroImageUrl?: string;
+};
+
+export function HeroSection({ heroImageUrl = "/images/hero-portrait.jpg" }: HeroSectionProps) {
   const { t } = useI18n();
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const preventImageActions = (event: SyntheticEvent) => event.preventDefault();
 
   return (
     <section className="relative flex min-h-screen items-center overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src={`${basePath}/images/hero-portrait.jpg`}
+          src={heroImageUrl}
           alt=""
           fill
-          className="object-cover object-[20%_18%] opacity-40 sm:object-[26%_17%] md:object-[36%_16%] lg:object-[40%_14%] xl:object-[38%_14%]"
+          draggable={false}
+          onContextMenu={preventImageActions}
+          onDragStart={preventImageActions}
+          className="protect-portfolio-image object-cover object-[20%_18%] opacity-40 sm:object-[26%_17%] md:object-[36%_16%] lg:object-[40%_14%] xl:object-[38%_14%]"
           priority
+        />
+        <span
+          className="pointer-events-auto absolute inset-0 z-[1]"
+          onContextMenu={preventImageActions}
+          onDragStart={preventImageActions}
+          aria-hidden="true"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />
       </div>

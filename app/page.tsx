@@ -9,18 +9,26 @@ import { PhotographySection } from "@/components/photography-section";
 import { MusicSection } from "@/components/music-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
+import { getCloudinaryNamedImages, getCloudinaryPhotos } from "@/lib/cloudinary";
 
-export default function Page() {
+export default async function Page() {
+  const [photos, namedImages] = await Promise.all([
+    getCloudinaryPhotos(),
+    getCloudinaryNamedImages(),
+  ]);
+
+  const heroImageUrl = namedImages.heroPortraitUrl ?? "/images/hero-portrait.jpg";
+
   return (
     <main>
       <Navigation />
-      <HeroSection />
+      <HeroSection heroImageUrl={heroImageUrl} />
       <MarqueeBand />
-      <AboutSection />
+      <AboutSection portraitUrl={heroImageUrl} />
       <QualitiesSection />
       <EducationSection />
       <CodeSection />
-      <PhotographySection />
+      <PhotographySection photos={photos} />
       <MusicSection />
       <ContactSection />
       <Footer />

@@ -2,7 +2,9 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Space_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/theme-provider";
+import { AccessibilityControls } from "@/components/accessibility-controls";
 import { I18nProvider } from "@/lib/i18n";
+import { getCloudinaryNamedImages } from "@/lib/cloudinary";
 
 import "./globals.css";
 
@@ -17,29 +19,34 @@ const spaceMono = Space_Mono({
   variable: "--font-space-mono",
 });
 
-export const metadata: Metadata = {
-  title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",
-  description:
-    "Portfolio de Denise Evelyn Galloni — una creadora multidisciplinar que trabaja en la intersección entre código, luz y sonido.",
-  icons: {
-    icon: "/images/logo.png",
-    shortcut: "/images/logo.png",
-    apple: "/images/logo.png",
-  },
-  openGraph: {
+export async function generateMetadata(): Promise<Metadata> {
+  const namedImages = await getCloudinaryNamedImages();
+  const logoIconUrl = namedImages.logoUrl ?? "/images/logo.png";
+
+  return {
     title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",
     description:
       "Portfolio de Denise Evelyn Galloni — una creadora multidisciplinar que trabaja en la intersección entre código, luz y sonido.",
-    locale: "es_ES",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",
-    description:
-      "Portfolio de Denise Evelyn Galloni — una creadora multidisciplinar que trabaja en la intersección entre código, luz y sonido.",
-  },
-};
+    icons: {
+      icon: logoIconUrl,
+      shortcut: logoIconUrl,
+      apple: logoIconUrl,
+    },
+    openGraph: {
+      title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",
+      description:
+        "Portfolio de Denise Evelyn Galloni — una creadora multidisciplinar que trabaja en la intersección entre código, luz y sonido.",
+      locale: "es_ES",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",
+      description:
+        "Portfolio de Denise Evelyn Galloni — una creadora multidisciplinar que trabaja en la intersección entre código, luz y sonido.",
+    },
+  };
+}
 
 export const viewport: Viewport = {
   themeColor: "#0d0d0d",
@@ -59,7 +66,10 @@ export default function RootLayout({
           enableSystem={false}
           disableTransitionOnChange
         >
-          <I18nProvider>{children}</I18nProvider>
+          <I18nProvider>
+            {children}
+            <AccessibilityControls />
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

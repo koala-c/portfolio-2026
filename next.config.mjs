@@ -13,12 +13,21 @@ const nextConfig = {
   assetPrefix: basePath ? `${basePath}/` : "",
   env: {
     NEXT_PUBLIC_BASE_PATH: basePath,
+    NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: process.env.CLOUDINARY_CLOUD_NAME ?? "",
+    NEXT_PUBLIC_CLOUDINARY_IMAGES_FOLDER:
+      process.env.CLOUDINARY_IMAGES_FOLDER ?? "portfolio-2026/images",
   },
   typescript: {
     ignoreBuildErrors: true,
   },
   images: {
     unoptimized: true,
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+      },
+    ],
   },
 };
 

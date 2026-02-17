@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import { createContext, useContext, useState, useCallback, type ReactNode } from "react";
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from "react";
 
 export type Locale = "en" | "es" | "cat" | "it";
 
@@ -10,6 +10,41 @@ export const localeLabels: Record<Locale, string> = {
   cat: "CAT",
   it: "IT",
 };
+
+const SUPPORTED_LOCALES: Locale[] = ["en", "es", "cat", "it"];
+const LOCALE_STORAGE_KEY = "portfolio-locale";
+
+function isLocale(value: string): value is Locale {
+  return SUPPORTED_LOCALES.includes(value as Locale);
+}
+
+function mapLanguageTagToLocale(languageTag: string): Locale | null {
+  const normalized = languageTag.toLowerCase();
+  const base = normalized.split("-")[0]?.split("_")[0] ?? normalized;
+
+  if (base === "ca") return "cat";
+  if (base === "es") return "es";
+  if (base === "it") return "it";
+  if (base === "en") return "en";
+
+  if (normalized.startsWith("ca")) return "cat";
+  if (normalized.startsWith("es")) return "es";
+  if (normalized.startsWith("it")) return "it";
+  if (normalized.startsWith("en")) return "en";
+
+  return null;
+}
+
+function detectLocaleFromDevice(): Locale {
+  const browserLanguages = [...(navigator.languages ?? []), navigator.language].filter(Boolean);
+
+  for (const lang of browserLanguages) {
+    const mappedLocale = mapLanguageTagToLocale(lang);
+    if (mappedLocale) return mappedLocale;
+  }
+
+  return "en";
+}
 
 const translations = {
   en: {
@@ -510,7 +545,32 @@ interface I18nContextType {
 const I18nContext = createContext<I18nContextType | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocale] = useState<Locale>("es");
+  const [locale, setLocale] = useState<Locale>("en");
+
+  useEffect(() => {
+    try {
+      const storedLocale = window.localStorage.getItem(LOCALE_STORAGE_KEY);
+      if (storedLocale && isLocale(storedLocale)) {
+        setLocale(storedLocale);
+        return;
+      }
+    } catch {
+      // no-op
+    }
+
+    setLocale(detectLocaleFromDevice());
+  }, []);
+
+  useEffect(() => {
+    const htmlLang = locale === "cat" ? "ca" : locale;
+    document.documentElement.lang = htmlLang;
+
+    try {
+      window.localStorage.setItem(LOCALE_STORAGE_KEY, locale);
+    } catch {
+      // no-op
+    }
+  }, [locale]);
 
   const t = useCallback(
     (key: TranslationKeys): string => {

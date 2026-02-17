@@ -9,39 +9,6 @@ import { useI18n } from "@/lib/i18n";
 
 const groupIcons = [Users, ClipboardCheck, Target];
 
-function balanceChipOrder(items: string[]) {
-  const estimatedRowCapacity = 42;
-  const sorted = [...items].sort((a, b) => b.length - a.length);
-  const rows: string[][] = [];
-
-  while (sorted.length > 0) {
-    const first = sorted.shift()!;
-    const row = [first];
-    const firstWidth = first.length + 3;
-    const remaining = estimatedRowCapacity - firstWidth;
-
-    let bestFitIndex = -1;
-    let bestFitLength = -1;
-
-    for (let i = 0; i < sorted.length; i += 1) {
-      const candidateLength = sorted[i].length + 3;
-      if (candidateLength <= remaining && candidateLength > bestFitLength) {
-        bestFitLength = candidateLength;
-        bestFitIndex = i;
-      }
-    }
-
-    if (bestFitIndex >= 0) {
-      row.push(sorted[bestFitIndex]);
-      sorted.splice(bestFitIndex, 1);
-    }
-
-    rows.push(row);
-  }
-
-  return rows;
-}
-
 export function QualitiesSection() {
   const { t } = useI18n();
   const qualities = t("qualities.list")
@@ -81,20 +48,16 @@ export function QualitiesSection() {
                     {group.title}
                   </h3>
                 </div>
-                <div className="mt-4 space-y-1.5">
-                  {balanceChipOrder(group.items).map((row, rowIndex) => (
-                    <ul key={`${group.title}-row-${rowIndex}`} className="flex flex-nowrap gap-1.5">
-                      {row.map((quality, qualityIndex) => (
-                        <li
-                          key={`${group.title}-${rowIndex}-${quality}-${qualityIndex}`}
-                          className="max-w-full whitespace-nowrap rounded-full border border-border/80 bg-secondary/40 px-2.5 py-1 text-[13px] leading-5 text-muted-foreground transition-colors duration-200 hover:border-primary/50 hover:text-foreground"
-                        >
-                          {quality}
-                        </li>
-                      ))}
-                    </ul>
+                <ul className="mt-4 flex flex-wrap gap-1.5">
+                  {group.items.map((quality, qualityIndex) => (
+                    <li
+                      key={`${group.title}-${quality}-${qualityIndex}`}
+                      className="max-w-full whitespace-nowrap rounded-full border border-border/80 bg-secondary/40 px-2.5 py-1 text-[13px] leading-5 text-muted-foreground transition-colors duration-200 hover:border-primary/50 hover:text-foreground"
+                    >
+                      {quality}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </article>
             );
           })}
