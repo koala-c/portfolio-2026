@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { AccessibilityControls } from "@/components/accessibility-controls";
 import { I18nProvider } from "@/lib/i18n";
 import { getCloudinaryNamedImages } from "@/lib/cloudinary";
+import { withBasePath } from "@/lib/base-path";
 
 import "./globals.css";
 
@@ -21,7 +22,7 @@ const spaceMono = Space_Mono({
 
 export async function generateMetadata(): Promise<Metadata> {
   const namedImages = await getCloudinaryNamedImages();
-  const logoIconUrl = namedImages.logoUrl ?? "/images/logo.png";
+  const logoIconUrl = namedImages.logoUrl ?? withBasePath("/images/logo.png");
 
   return {
     title: "Denise Evelyn Galloni — Desarrolladora, Fotógrafa y Violinista",

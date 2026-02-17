@@ -45,6 +45,20 @@ function publicIdToAlt(publicId: string) {
   return name.replace(/[-_]+/g, " ").trim();
 }
 
+function buildBasicAuthHeader(apiKey: string, apiSecret: string) {
+  const raw = `${apiKey}:${apiSecret}`;
+
+  if (typeof Buffer !== "undefined") {
+    return `Basic ${Buffer.from(raw, "utf-8").toString("base64")}`;
+  }
+
+  if (typeof btoa !== "undefined") {
+    return `Basic ${btoa(raw)}`;
+  }
+
+  throw new Error("No base64 encoder available for Cloudinary auth.");
+}
+
 async function fetchCloudinaryResourcesByFolder(folder: string): Promise<CloudinaryResource[]> {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   const apiKey = process.env.CLOUDINARY_API_KEY;
@@ -57,23 +71,31 @@ async function fetchCloudinaryResourcesByFolder(folder: string): Promise<Cloudin
   const endpoint = `https://api.cloudinary.com/v1_1/${cloudName}/resources/by_asset_folder?asset_folder=${encodeURIComponent(
     folder
   )}&max_results=200`;
-  const basicAuth = Buffer.from(`${apiKey}:${apiSecret}`).toString("base64");
+  let authorizationHeader = "";
+  try {
+    authorizationHeader = buildBasicAuthHeader(apiKey, apiSecret);
+  } catch (error) {
+    console.error("[cloudinary] auth build failed:", error);
+    return [];
+  }
 
   try {
     const response = await fetch(endpoint, {
       headers: {
-        Authorization: `Basic ${basicAuth}`,
+        Authorization: authorizationHeader,
       },
-      cache: "no-store",
+      cache: "force-cache",
     });
 
     if (!response.ok) {
+      console.error(`[cloudinary] request failed for folder "${folder}" with status ${response.status}`);
       return [];
     }
 
     const data = (await response.json()) as CloudinaryResponse;
     return data.resources ?? [];
-  } catch {
+  } catch (error) {
+    console.error(`[cloudinary] fetch failed for folder "${folder}":`, error);
     return [];
   }
 }

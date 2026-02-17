@@ -10,6 +10,7 @@ import { MusicSection } from "@/components/music-section";
 import { ContactSection } from "@/components/contact-section";
 import { Footer } from "@/components/footer";
 import { getCloudinaryNamedImages, getCloudinaryPhotos } from "@/lib/cloudinary";
+import { withBasePath } from "@/lib/base-path";
 
 export default async function Page() {
   const [photos, namedImages] = await Promise.all([
@@ -17,7 +18,7 @@ export default async function Page() {
     getCloudinaryNamedImages(),
   ]);
 
-  const heroImageUrl = namedImages.heroPortraitUrl ?? "/images/hero-portrait.jpg";
+  const heroImageUrl = namedImages.heroPortraitUrl ?? withBasePath("/images/hero-portrait.jpg");
 
   return (
     <main>

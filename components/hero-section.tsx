@@ -3,12 +3,13 @@
 import { type SyntheticEvent } from "react";
 import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
+import { withBasePath } from "@/lib/base-path";
 
 type HeroSectionProps = {
   heroImageUrl?: string;
 };
 
-export function HeroSection({ heroImageUrl = "/images/hero-portrait.jpg" }: HeroSectionProps) {
+export function HeroSection({ heroImageUrl = withBasePath("/images/hero-portrait.jpg") }: HeroSectionProps) {
   const { t } = useI18n();
   const preventImageActions = (event: SyntheticEvent) => event.preventDefault();
 

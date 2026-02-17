@@ -3,12 +3,13 @@
 import { type SyntheticEvent } from "react";
 import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
+import { withBasePath } from "@/lib/base-path";
 
 type AboutSectionProps = {
   portraitUrl?: string;
 };
 
-export function AboutSection({ portraitUrl = "/images/hero-portrait.jpg" }: AboutSectionProps) {
+export function AboutSection({ portraitUrl = withBasePath("/images/hero-portrait.jpg") }: AboutSectionProps) {
   const { t } = useI18n();
   const preventImageActions = (event: SyntheticEvent) => event.preventDefault();
 

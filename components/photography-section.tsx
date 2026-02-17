@@ -12,14 +12,17 @@ import {
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
 import type { PortfolioPhoto } from "@/lib/cloudinary";
+import { withBasePath } from "@/lib/base-path";
+
+const PLACEHOLDER_IMAGE = withBasePath("/placeholder.svg");
 
 const fallbackPhotos: PortfolioPhoto[] = [
-  { src: "/placeholder.svg", alt: "Golden hour mountain landscape", categoryKey: "Landscape" },
-  { src: "/placeholder.svg", alt: "Urban night street scene", categoryKey: "Street" },
-  { src: "/placeholder.svg", alt: "Abstract architecture detail", categoryKey: "Architecture" },
-  { src: "/placeholder.svg", alt: "Atmospheric forest portrait", categoryKey: "Portrait" },
-  { src: "/placeholder.svg", alt: "Vintage camera still life", categoryKey: "Still Life" },
-  { src: "/placeholder.svg", alt: "Dramatic ocean seascape", categoryKey: "Landscape" },
+  { src: PLACEHOLDER_IMAGE, alt: "Golden hour mountain landscape", categoryKey: "Landscape" },
+  { src: PLACEHOLDER_IMAGE, alt: "Urban night street scene", categoryKey: "Street" },
+  { src: PLACEHOLDER_IMAGE, alt: "Abstract architecture detail", categoryKey: "Architecture" },
+  { src: PLACEHOLDER_IMAGE, alt: "Atmospheric forest portrait", categoryKey: "Portrait" },
+  { src: PLACEHOLDER_IMAGE, alt: "Vintage camera still life", categoryKey: "Still Life" },
+  { src: PLACEHOLDER_IMAGE, alt: "Dramatic ocean seascape", categoryKey: "Landscape" },
 ];
 
 type PhotographySectionProps = {
@@ -66,12 +69,12 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
   };
 
   const handleImageError = (src: string) => {
-    if (!src || src === "/placeholder.svg") return;
+    if (!src || src === PLACEHOLDER_IMAGE) return;
     setFailedSources((previous) => ({ ...previous, [src]: true }));
   };
 
   const resolveImageSrc = (src: string) => {
-    if (!src || failedSources[src]) return "/placeholder.svg";
+    if (!src || failedSources[src]) return PLACEHOLDER_IMAGE;
     return src;
   };
 
