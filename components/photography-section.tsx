@@ -30,6 +30,7 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
   const [lightbox, setLightbox] = useState<number | null>(null);
   const [carouselApi, setCarouselApi] = useState<CarouselApi>();
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [failedSources, setFailedSources] = useState<Record<string, boolean>>({});
   const { t, tCategories } = useI18n();
   const categories = tCategories("photo.categories");
   const galleryPhotos = photos.length > 0 ? photos : fallbackPhotos;
@@ -62,6 +63,16 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
 
   const preventImageActions = (event: SyntheticEvent) => {
     event.preventDefault();
+  };
+
+  const handleImageError = (src: string) => {
+    if (!src || src === "/placeholder.svg") return;
+    setFailedSources((previous) => ({ ...previous, [src]: true }));
+  };
+
+  const resolveImageSrc = (src: string) => {
+    if (!src || failedSources[src]) return "/placeholder.svg";
+    return src;
   };
 
   useEffect(() => {
@@ -107,10 +118,11 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
                       className="group relative aspect-[4/3] w-full overflow-hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     >
                       <Image
-                        src={photo.src || "/placeholder.svg"}
+                        src={resolveImageSrc(photo.src)}
                         alt={photo.alt}
                         fill
                         draggable={false}
+                        onError={() => handleImageError(photo.src)}
                         className="protect-portfolio-image object-cover grayscale brightness-75 transition-[transform,filter] duration-700 group-hover:scale-105 group-hover:grayscale-0 group-hover:brightness-100"
                       />
                       <span className="pointer-events-auto absolute inset-0 z-10" aria-hidden="true" />
@@ -175,10 +187,11 @@ export function PhotographySection({ photos = fallbackPhotos }: PhotographySecti
 
           <div className="relative mx-6 aspect-[3/2] w-full max-w-5xl">
             <Image
-              src={galleryPhotos[lightbox].src || "/placeholder.svg"}
+              src={resolveImageSrc(galleryPhotos[lightbox].src)}
               alt={galleryPhotos[lightbox].alt}
               fill
               draggable={false}
+              onError={() => handleImageError(galleryPhotos[lightbox].src)}
               onContextMenu={preventImageActions}
               onDragStart={preventImageActions}
               className="protect-portfolio-image object-contain"

@@ -17,6 +17,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      CLOUDINARY_CLOUD_NAME: ${{ secrets.CLOUDINARY_CLOUD_NAME }}
+      CLOUDINARY_API_KEY: ${{ secrets.CLOUDINARY_API_KEY }}
+      CLOUDINARY_API_SECRET: ${{ secrets.CLOUDINARY_API_SECRET }}
+      CLOUDINARY_FOLDER: ${{ vars.CLOUDINARY_FOLDER }}
+      CLOUDINARY_IMAGES_FOLDER: ${{ vars.CLOUDINARY_IMAGES_FOLDER }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
