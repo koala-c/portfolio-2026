@@ -5,6 +5,7 @@ import { AboutSection } from "@/components/about-section";
 import { EducationSection } from "@/components/education-section";
 import { QualitiesSection } from "@/components/qualities-section";
 import { CodeSection } from "@/components/code-section";
+import { ProjectsSection } from "@/components/projects-section";
 import { PhotographySection } from "@/components/photography-section";
 import { MusicSection } from "@/components/music-section";
 import { ContactSection } from "@/components/contact-section";
@@ -29,6 +30,7 @@ export default async function Page() {
       <QualitiesSection />
       <EducationSection />
       <CodeSection />
+      <ProjectsSection />
       <PhotographySection photos={photos} />
       <MusicSection />
       <ContactSection />
