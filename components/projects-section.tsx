@@ -4,9 +4,11 @@ import Image from "next/image";
 import { useI18n } from "@/lib/i18n";
 import { ExternalLink } from "lucide-react";
 
+type TranslationKey = Parameters<ReturnType<typeof useI18n>["t"]>[0];
+
 type Project = {
-  titleKey: string;
-  descriptionKey: string;
+  titleKey: TranslationKey;
+  descriptionKey: TranslationKey;
   url: string;
   previewUrl: string;
   tags?: string[];
@@ -17,14 +19,14 @@ const projects: Project[] = [
     titleKey: "projects.calendarFlair.title",
     descriptionKey: "projects.calendarFlair.description",
     url: "https://koala-c.github.io/calendar-flair-archive/",
-    previewUrl: "/projects/calendar-flair-preview.png",
+    previewUrl: "projects/calendar-flair-preview.png",
     tags: ["web", "archive"],
   },
   {
     titleKey: "projects.bookClub.title",
     descriptionKey: "projects.bookClub.description",
     url: "https://book-club-lc.onrender.com/join",
-    previewUrl: "/projects/book-club-preview.png",
+    previewUrl: "projects/book-club-preview.png",
     tags: ["web", "app"],
   },
 ];
