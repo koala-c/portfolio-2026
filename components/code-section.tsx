@@ -4,16 +4,18 @@ import { ExternalLink, Linkedin, MapPin } from "lucide-react";
 import { useI18n } from "@/lib/i18n";
 
 const projectMeta = [
-  { tags: ["Ionic", "Angular", "React Native", "Firebase"], link: "#" },
+  { tags: ["Laravel", "Flutter", "MySQL", "Livewire", "Filament", "Node.js"], link: "#" },
+  { tags: ["Ionic", "Angular", "React Native", "Firebase", "Node.js"], link: "#" },
   { tags: ["Flutter", "Figma", "UI/UX"], link: "#" },
   { tags: ["Ionic", "Angular", ".NET MAUI", "ERP"], link: "#" },
-  { tags: ["Hardware", "Software", "Customer Service"], link: "#" },
+  { tags: ["Printing", "Hardware", "Software", "POS"], link: "#" },
 ];
 
 export function CodeSection() {
   const { t, tArray } = useI18n();
   const projectTranslations = tArray("code.projects");
   const projectMetaTranslations = tArray("code.meta");
+  const projectTagsTranslations = tArray("code.tags");
 
   return (
     <section id="code" className="border-t border-border py-32">
@@ -42,6 +44,7 @@ export function CodeSection() {
           {projectMeta.map((project, index) => {
             const translated = projectTranslations[index];
             const meta = projectMetaTranslations[index];
+            const tags = projectTagsTranslations[index] || project.tags;
             return (
               <a
                 key={translated?.title ?? index}
@@ -62,7 +65,7 @@ export function CodeSection() {
                 </div>
 
                 <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
+                  {tags.map((tag: string) => (
                     <span
                       key={tag}
                       className="border border-border px-3 py-1 font-mono text-[10px] tracking-wider text-muted-foreground uppercase"

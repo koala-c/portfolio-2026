@@ -69,9 +69,9 @@ const translations = {
 
     "about.label": "About",
     "about.heading": "Code, light, and sound.",
-    "about.p1": "I'm a Full Stack Developer with experience building mobile and web applications using JavaScript, React Native, Angular, Flutter, and Ionic Framework. On the backend I've worked with PHP/Laravel, .NET, GraphQL, Firebase, and PostgreSQL.",
-    "about.p2": "I also design with Figma, Illustrator, and Photoshop, and I've developed videogames with Unity. I work with agile methodologies (Scrum), Git/GitHub for version control, and Jira for task management across dev, testing, and production environments. I also practice vibe coding to quickly prototype ideas and iterate with creative flow.",
-    "about.p3": "Beyond code, I'm a photographer and a violinist. Based in Girona, Catalonia. Currently available for development roles, photography commissions, and music collaborations.",
+    "about.p1": "Full-Stack and Cross-Platform Developer | Laravel (Backend + Frontend with Blade, TailwindCSS, Livewire) · React Native · Flutter · Ionic · .NET MAUI · Next.js · Angular · PostgreSQL · MySQL · Firebase · GraphQL",
+    "about.p2": "Software developer specialized in full-stack mobile and web applications, building both robust backend and modern, interactive frontend. I work with Laravel, Blade, TailwindCSS and Livewire, as well as cross-platform applications with React Native, Flutter, Ionic and .NET MAUI, and web frontend development with Next.js and Angular. I manage PostgreSQL, MySQL and Firebase databases, and have also used GraphQL for efficient queries. I can participate in the entire development cycle, from UI/UX in Figma and graphic design to scalable systems, following agile methodologies (Scrum) and using Git/GitHub and Jira.",
+    "about.p3": "Beyond technology, I'm a photographer and violinist, passionate about combining creativity, music and technology to build digital products with impact.",
     "about.yearsDev": "Years in Tech",
     "about.projectsBuilt": "Projects Built",
     "about.languages": "Languages",
@@ -88,15 +88,27 @@ const translations = {
     "code.heading": "Professional experience",
     "code.github": "View LinkedIn",
     "code.meta": [
+      { year: "2026 (1 month)", location: "Vilafant, Spain" },
       { year: "2025 (7 months)", location: "Girona, Spain" },
       { year: "2024 (6 months)", location: "Schroon Lake, NY, USA" },
       { year: "2022-23 (1 year 4 months)", location: "Girona, Spain" },
       { year: "2018-21 (3 years 6 months)", location: "Girona, Spain" },
     ],
+    "code.tags": [
+      ["Laravel", "Flutter", "MySQL", "Livewire", "Filament", "Node.js"],
+      ["Ionic", "Angular", "React Native", "Firebase", "Node.js"],
+      ["Flutter", "Figma", "UI/UX"],
+      ["Ionic", "Angular", ".NET MAUI", "ERP"],
+      ["Printing", "Hardware", "Software", "POS"],
+    ],
     "code.projects": [
       {
+        title: "Avantiam",
+        description: "Full Stack Developer. Developing custom software to help companies digitize and optimize their processes with Laravel, Flutter, MySQL, Livewire, Filament and Node.js.",
+      },
+      {
         title: "MyChefTool",
-        description: "Full Stack Developer. Built hospitality apps with Ionic/Angular, JavaScript, and React Native. Managed non-relational databases with Firebase.",
+        description: "Full Stack Developer. Built hospitality apps with Ionic/Angular, JavaScript, React Native and Node.js. Managed non-relational databases with Firebase.",
       },
       {
         title: "Word of Life Fellowship",
@@ -204,9 +216,9 @@ const translations = {
 
     "about.label": "Sobre mí",
     "about.heading": "Código, luz y sonido.",
-    "about.p1": "Soy desarrolladora Full Stack con experiencia construyendo aplicaciones móviles y web utilizando JavaScript, React Native, Angular, Flutter e Ionic Framework. En el backend he trabajado con PHP/Laravel, .NET, GraphQL, Firebase y PostgreSQL.",
-    "about.p2": "También diseño con Figma, Illustrator y Photoshop, y he desarrollado videojuegos con Unity. Trabajo con metodologías ágiles (Scrum), Git/GitHub para control de versiones y Jira para gestión de tareas en entornos de desarrollo, pruebas y producción. También practico vibe coding para prototipar ideas rápido e iterar con flujo creativo.",
-    "about.p3": "Además del código, soy fotógrafa y violinista. Radicada en Girona, Cataluña. Actualmente disponible para roles de desarrollo, encargos fotográficos y colaboraciones musicales.",
+    "about.p1": "Programadora Full-Stack y Cross-Platform | Laravel (Backend + Frontend con Blade, TailwindCSS, Livewire) · React Native · Flutter · Ionic · .NET MAUI · Next.js · Angular · PostgreSQL · MySQL · Firebase · GraphQL",
+    "about.p2": "Desarrolladora de software especializada en aplicaciones móviles y web full-stack, creando tanto backend robusto como frontend moderno e interactivo. Trabajo con Laravel, Blade, TailwindCSS y Livewire, así como en aplicaciones multiplataforma con React Native, Flutter, Ionic y .NET MAUI, y desarrollo frontend web con Next.js y Angular. Gestiono bases de datos PostgreSQL, MySQL y Firebase, y también he utilizado GraphQL para consultas eficientes. Puedo participar en todo el ciclo de desarrollo, desde UI/UX en Figma y diseño gráfico hasta sistemas escalables, siguiendo metodologías ágiles (Scrum) y usando Git/GitHub y Jira.",
+    "about.p3": "Además de la tecnología, soy fotógrafa y violinista, apasionada por combinar creatividad, música y tecnología para construir productos digitales con impacto.",
     "about.yearsDev": "Años en Tech",
     "about.projectsBuilt": "Proyectos",
     "about.languages": "Idiomas",
@@ -223,23 +235,35 @@ const translations = {
     "code.heading": "Experiencia profesional",
     "code.github": "Ver LinkedIn",
     "code.meta": [
+      { year: "2026 (1 mes)", location: "Vilafant, España" },
       { year: "2025 (7 meses)", location: "Girona, España" },
       { year: "2024 (6 meses)", location: "Schroon Lake, NY, USA" },
       { year: "2022-23 (1 año 4 meses)", location: "Girona, España" },
       { year: "2018-21 (3 años 6 meses)", location: "Girona, España" },
     ],
+    "code.tags": [
+      ["Laravel", "Flutter", "MySQL", "Livewire", "Filament", "Node.js"],
+      ["Ionic", "Angular", "React Native", "Firebase", "Node.js"],
+      ["Flutter", "Figma", "UI/UX"],
+      ["Ionic", "Angular", ".NET MAUI", "ERP"],
+      ["Impresión", "Hardware", "Software", "TPV"],
+    ],
     "code.projects": [
       {
+        title: "Avantiam",
+        description: "Programadora Full Stack. Desarrollo de software personalizado para ayudar a empresas a digitalizar y optimizar sus procesos con Laravel, Flutter, MySQL, Livewire, Filament y Node.js.",
+      },
+      {
         title: "MyChefTool",
-        description: "Desarrolladora Full Stack. Desarrollo de aplicaciones de hostelería con Ionic/Angular, JavaScript y React Native. Gestión de bases de datos no relacionales con Firebase.",
+        description: "Programadora Full Stack. Desarrollo de aplicaciones de hostelería con Ionic/Angular, JavaScript, React Native y Node.js. Gestión de bases de datos no relacionales con Firebase.",
       },
       {
         title: "Word of Life Fellowship",
-        description: "Desarrolladora Full Stack. Diseño de la app English Cafe en Figma y desarrollo de la versión inicial en Flutter.",
+        description: "Programadora Full Stack. Diseño de la app English Cafe en Figma y desarrollo de la versión inicial en Flutter.",
       },
       {
         title: "Danzai Software",
-        description: "Desarrolladora de Software. Desarrollo de aplicaciones de hostelería con Ionic/Angular y .NET MAUI. Configuración de ERP y gestión de bases de datos.",
+        description: "Programadora de Software. Desarrollo de aplicaciones de hostelería con Ionic/Angular y .NET MAUI. Configuración de ERP y gestión de bases de datos.",
       },
       {
         title: "Copylowcost",
@@ -339,9 +363,9 @@ const translations = {
 
     "about.label": "Sobre mi",
     "about.heading": "Codi, llum i so.",
-    "about.p1": "Soc desenvolupadora Full Stack amb experiència construint aplicacions mòbils i web utilitzant JavaScript, React Native, Angular, Flutter i Ionic Framework. Al backend he treballat amb PHP/Laravel, .NET, GraphQL, Firebase i PostgreSQL.",
-    "about.p2": "També dissenyo amb Figma, Illustrator i Photoshop, i he desenvolupat videojocs amb Unity. Treballo amb metodologies àgils (Scrum), Git/GitHub per al control de versions i Jira per a la gestió de tasques en entorns de desenvolupament, proves i producció. També practico vibe coding per prototipar idees ràpid i iterar amb flux creatiu.",
-    "about.p3": "A més del codi, soc fotògrafa i violinista. Amb base a Girona, Catalunya. Actualment disponible per a rols de desenvolupament, encàrrecs fotogràfics i col·laboracions musicals.",
+    "about.p1": "Programadora Full-Stack i Cross-Platform | Laravel (Backend + Frontend amb Blade, TailwindCSS, Livewire) · React Native · Flutter · Ionic · .NET MAUI · Next.js · Angular · PostgreSQL · MySQL · Firebase · GraphQL",
+    "about.p2": "Desenvolupadora de software especialitzada en aplicacions mòbils i web full-stack, creant tant backend robust com frontend modern i interactiu. Treballo amb Laravel, Blade, TailwindCSS i Livewire, així com en aplicacions multiplataforma amb React Native, Flutter, Ionic i .NET MAUI, i desenvolupament frontend web amb Next.js i Angular. Gestiono bases de dades PostgreSQL, MySQL i Firebase, i també he utilitzat GraphQL per a consultes eficients. Puc participar en tot el cicle de desenvolupament, des d'UI/UX a Figma i disseny gràfic fins a sistemes escalables, seguint metodologies àgils (Scrum) i usant Git/GitHub i Jira.",
+    "about.p3": "A més de la tecnologia, soc fotògrafa i violinista, apassionada per combinar creativitat, música i tecnologia per construir productes digitals amb impacte.",
     "about.yearsDev": "Anys en Tech",
     "about.projectsBuilt": "Projectes",
     "about.languages": "Idiomes",
@@ -358,15 +382,27 @@ const translations = {
     "code.heading": "Experiència professional",
     "code.github": "Veure LinkedIn",
     "code.meta": [
+      { year: "2026 (1 mes)", location: "Vilafant, Espanya" },
       { year: "2025 (7 mesos)", location: "Girona, Espanya" },
       { year: "2024 (6 mesos)", location: "Schroon Lake, NY, USA" },
       { year: "2022-23 (1 any 4 mesos)", location: "Girona, Espanya" },
       { year: "2018-21 (3 anys 6 mesos)", location: "Girona, Espanya" },
     ],
+    "code.tags": [
+      ["Laravel", "Flutter", "MySQL", "Livewire", "Filament", "Node.js"],
+      ["Ionic", "Angular", "React Native", "Firebase", "Node.js"],
+      ["Flutter", "Figma", "UI/UX"],
+      ["Ionic", "Angular", ".NET MAUI", "ERP"],
+      ["Impressió", "Hardware", "Software", "TPV"],
+    ],
     "code.projects": [
       {
+        title: "Avantiam",
+        description: "Programadora Full Stack. Desenvolupament de software personalitzat per ajudar empreses a digitalitzar i optimitzar els seus processos amb Laravel, Flutter, MySQL, Livewire, Filament i Node.js.",
+      },
+      {
         title: "MyChefTool",
-        description: "Desenvolupadora Full Stack. Desenvolupament d'aplicacions d'hostaleria amb Ionic/Angular, JavaScript i React Native. Gestió de bases de dades no relacionals amb Firebase.",
+        description: "Programadora Full Stack. Desenvolupament d'aplicacions d'hostaleria amb Ionic/Angular, JavaScript, React Native i Node.js. Gestió de bases de dades no relacionals amb Firebase.",
       },
       {
         title: "Word of Life Fellowship",
@@ -474,9 +510,9 @@ const translations = {
 
     "about.label": "Chi sono",
     "about.heading": "Codice, luce e suono.",
-    "about.p1": "Sono una sviluppatrice Full Stack con esperienza nella creazione di applicazioni mobile e web utilizzando JavaScript, React Native, Angular, Flutter e Ionic Framework. Nel backend ho lavorato con PHP/Laravel, .NET, GraphQL, Firebase e PostgreSQL.",
-    "about.p2": "Progetto anche con Figma, Illustrator e Photoshop, e ho sviluppato videogiochi con Unity. Lavoro con metodologie agili (Scrum), Git/GitHub per il controllo versione e Jira per la gestione dei task in ambienti di sviluppo, test e produzione. Pratico anche il vibe coding per prototipare idee rapidamente e iterare con flusso creativo.",
-    "about.p3": "Oltre al codice, sono fotografa e violinista. Con base a Girona, Catalogna, Spagna. Attualmente disponibile per ruoli di sviluppo, commissioni fotografiche e collaborazioni musicali.",
+    "about.p1": "Sviluppatrice Full-Stack e Cross-Platform | Laravel (Backend + Frontend con Blade, TailwindCSS, Livewire) · React Native · Flutter · Ionic · .NET MAUI · Next.js · Angular · PostgreSQL · MySQL · Firebase · GraphQL",
+    "about.p2": "Sviluppatrice software specializzata in applicazioni mobile e web full-stack, creando sia backend robusto che frontend moderno e interattivo. Lavoro con Laravel, Blade, TailwindCSS e Livewire, così come applicazioni multipiattaforma con React Native, Flutter, Ionic e .NET MAUI, e sviluppo frontend web con Next.js e Angular. Gestisco database PostgreSQL, MySQL e Firebase, e ho anche utilizzato GraphQL per query efficienti. Posso partecipare all'intero ciclo di sviluppo, da UI/UX in Figma e design grafico a sistemi scalabili, seguendo metodologie agili (Scrum) e usando Git/GitHub e Jira.",
+    "about.p3": "Oltre alla tecnologia, sono fotografa e violinista, appassionata di combinare creatività, musica e tecnologia per costruire prodotti digitali con impatto.",
     "about.yearsDev": "Anni in Tech",
     "about.projectsBuilt": "Progetti",
     "about.languages": "Lingue",
@@ -493,15 +529,27 @@ const translations = {
     "code.heading": "Esperienza professionale",
     "code.github": "Vedi LinkedIn",
     "code.meta": [
+      { year: "2026 (1 mese)", location: "Vilafant, Spagna" },
       { year: "2025 (7 mesi)", location: "Girona, Spagna" },
       { year: "2024 (6 mesi)", location: "Schroon Lake, NY, USA" },
       { year: "2022-23 (1 anno 4 mesi)", location: "Girona, Spagna" },
       { year: "2018-21 (3 anni 6 mesi)", location: "Girona, Spagna" },
     ],
+    "code.tags": [
+      ["Laravel", "Flutter", "MySQL", "Livewire", "Filament", "Node.js"],
+      ["Ionic", "Angular", "React Native", "Firebase", "Node.js"],
+      ["Flutter", "Figma", "UI/UX"],
+      ["Ionic", "Angular", ".NET MAUI", "ERP"],
+      ["Stampa", "Hardware", "Software", "POS"],
+    ],
     "code.projects": [
       {
+        title: "Avantiam",
+        description: "Sviluppatrice Full Stack. Sviluppo di software personalizzato per aiutare le aziende a digitalizzare e ottimizzare i loro processi con Laravel, Flutter, MySQL, Livewire, Filament e Node.js.",
+      },
+      {
         title: "MyChefTool",
-        description: "Sviluppatrice Full Stack. Sviluppo di app per la ristorazione con Ionic/Angular, JavaScript e React Native. Gestione di database non relazionali con Firebase.",
+        description: "Sviluppatrice Full Stack. Sviluppo di app per la ristorazione con Ionic/Angular, JavaScript, React Native e Node.js. Gestione di database non relazionali con Firebase.",
       },
       {
         title: "Word of Life Fellowship",
