@@ -88,7 +88,7 @@ const translations = {
     "code.heading": "Professional experience",
     "code.github": "View LinkedIn",
     "code.meta": [
-      { year: "2026 (1 month)", location: "Vilafant, Spain" },
+      { year: "2026 (5 months)", location: "Vilafant, Spain" },
       { year: "2025 (7 months)", location: "Girona, Spain" },
       { year: "2024 (6 months)", location: "Schroon Lake, NY, USA" },
       { year: "2022-23 (1 year 4 months)", location: "Girona, Spain" },
@@ -235,7 +235,7 @@ const translations = {
     "code.heading": "Experiencia profesional",
     "code.github": "Ver LinkedIn",
     "code.meta": [
-      { year: "2026 (1 mes)", location: "Vilafant, España" },
+      { year: "2026 (5 meses)", location: "Vilafant, España" },
       { year: "2025 (7 meses)", location: "Girona, España" },
       { year: "2024 (6 meses)", location: "Schroon Lake, NY, USA" },
       { year: "2022-23 (1 año 4 meses)", location: "Girona, España" },
@@ -382,7 +382,7 @@ const translations = {
     "code.heading": "Experiència professional",
     "code.github": "Veure LinkedIn",
     "code.meta": [
-      { year: "2026 (1 mes)", location: "Vilafant, Espanya" },
+      { year: "2026 (5 mesos)", location: "Vilafant, Espanya" },
       { year: "2025 (7 mesos)", location: "Girona, Espanya" },
       { year: "2024 (6 mesos)", location: "Schroon Lake, NY, USA" },
       { year: "2022-23 (1 any 4 mesos)", location: "Girona, Espanya" },
@@ -529,7 +529,7 @@ const translations = {
     "code.heading": "Esperienza professionale",
     "code.github": "Vedi LinkedIn",
     "code.meta": [
-      { year: "2026 (1 mese)", location: "Vilafant, Spagna" },
+      { year: "2026 (5 mesi)", location: "Vilafant, Spagna" },
       { year: "2025 (7 mesi)", location: "Girona, Spagna" },
       { year: "2024 (6 mesi)", location: "Schroon Lake, NY, USA" },
       { year: "2022-23 (1 anno 4 mesi)", location: "Girona, Spagna" },
